@@ -52,3 +52,13 @@ src/
 
 All content can be customized in the `src/data/` directory. The design system uses Tailwind CSS with custom colors defined in `tailwind.config.js`.
 
+## Contact Form Setup
+
+The contact form uses Formspree to send emails. To set it up:
+
+1. Create a free account at [formspree.io](https://formspree.io)
+2. Create a new form and get your form ID
+3. Update `formspreeEndpoint` in `src/data/content.ts` with your Formspree form ID
+
+See `FORMSPREE_SETUP.md` for detailed instructions.
+

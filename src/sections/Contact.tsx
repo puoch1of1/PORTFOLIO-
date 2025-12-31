@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, Github, Linkedin } from 'lucide-react';
-import { socialLinks, personalInfo } from '../data/content';
+import { Mail, Send, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
+import { socialLinks, personalInfo, formspreeEndpoint } from '../data/content';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,18 +10,49 @@ export default function Contact() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Form submission logic would go here
-    // For now, just log and reset
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setFormData({ name: '', email: '', message: '' });
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio Contact Form - Message from ${formData.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 5000);
+      } else {
+        const data = await response.json();
+        setSubmitStatus('error');
+        setErrorMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
+      console.error('Form submission error:', error);
+    } finally {
       setIsSubmitting(false);
-      alert('Thank you for your message! I\'ll get back to you soon.');
-    }, 1000);
+    }
   };
 
   const handleChange = (
@@ -31,6 +62,11 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    // Clear error message when user starts typing
+    if (submitStatus === 'error') {
+      setSubmitStatus('idle');
+      setErrorMessage('');
+    }
   };
 
   return (
@@ -59,6 +95,7 @@ export default function Contact() {
             viewport={{ once: true }}
             onSubmit={handleSubmit}
             className="space-y-6"
+            noValidate
           >
             <div>
               <label
@@ -76,6 +113,7 @@ export default function Contact() {
                 required
                 className="w-full px-4 py-3 bg-primary-charcoal border border-white/10 rounded-lg text-white placeholder-secondary-gray focus:outline-none focus:border-accent-blue transition-colors"
                 placeholder="Your name"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -95,6 +133,7 @@ export default function Contact() {
                 required
                 className="w-full px-4 py-3 bg-primary-charcoal border border-white/10 rounded-lg text-white placeholder-secondary-gray focus:outline-none focus:border-accent-blue transition-colors"
                 placeholder="your.email@example.com"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -114,18 +153,53 @@ export default function Contact() {
                 rows={6}
                 className="w-full px-4 py-3 bg-primary-charcoal border border-white/10 rounded-lg text-white placeholder-secondary-gray focus:outline-none focus:border-accent-blue transition-colors resize-none"
                 placeholder="Tell me about your project, opportunity, or just say hello..."
+                disabled={isSubmitting}
               />
             </div>
+
+            {/* Success Message */}
+            {submitStatus === 'success' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 p-4 bg-accent-emerald/20 border border-accent-emerald/40 rounded-lg text-accent-emerald"
+              >
+                <CheckCircle size={20} />
+                <p className="text-sm font-medium">
+                  Thank you! Your message has been sent. I'll get back to you soon.
+                </p>
+              </motion.div>
+            )}
+
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-start gap-2 p-4 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400"
+              >
+                <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium mb-1">Failed to send message</p>
+                  {errorMessage && (
+                    <p className="text-xs text-red-300">{errorMessage}</p>
+                  )}
+                </div>
+              </motion.div>
+            )}
 
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               className="w-full px-6 py-3 bg-accent-blue text-white rounded-lg font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
-                'Sending...'
+                <>
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Sending...
+                </>
               ) : (
                 <>
                   <Send size={20} />
@@ -164,7 +238,7 @@ export default function Contact() {
                   <p className="text-white font-medium group-hover:text-accent-blue transition-colors">
                     Email
                   </p>
-                  <p className="text-sm text-secondary-gray">{personalInfo.email}</p>
+                  <p className="text-sm text-secondary-gray break-words">{personalInfo.email}</p>
                 </div>
               </a>
 
@@ -208,4 +282,3 @@ export default function Contact() {
     </section>
   );
 }
-

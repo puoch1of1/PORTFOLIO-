@@ -208,3 +208,8 @@ export const socialLinks = {
   email: "mailto:lomaspuoch502@gmail.com",
 };
 
+// Formspree form endpoint
+// Get your form ID from https://formspree.io/forms
+// Replace 'YOUR_FORM_ID' with your actual Formspree form ID
+export const formspreeEndpoint = "https://formspree.io/f/YOUR_FORM_ID";
+
