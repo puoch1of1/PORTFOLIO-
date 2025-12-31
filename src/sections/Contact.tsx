@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, Github, Linkedin, MessageSquare } from 'lucide-react';
+import { Mail, Send, Github, Linkedin } from 'lucide-react';
 import { socialLinks, personalInfo } from '../data/content';
 
 export default function Contact() {
@@ -34,24 +34,24 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
+    <section id="contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-3 sm:mb-4">
             Get In Touch
           </h2>
-          <p className="text-lg text-secondary-gray max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-secondary-gray max-w-2xl mx-auto px-4">
             I'm open to collaboration, internship opportunities, and research partnerships.
             Let's connect and explore how we can work together.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
           <motion.form
             initial={{ opacity: 0, x: -20 }}

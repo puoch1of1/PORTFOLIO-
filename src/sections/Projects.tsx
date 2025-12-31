@@ -22,13 +22,13 @@ export default function Projects() {
   const otherProjects = projects.filter(p => !p.isFeatured);
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
+    <section id="projects" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-heading font-bold mb-4 text-center"
+          className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-3 sm:mb-4 text-center"
         >
           Projects
         </motion.h2>
@@ -36,7 +36,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-secondary-gray mb-16 max-w-2xl mx-auto"
+          className="text-center text-sm sm:text-base text-secondary-gray mb-12 sm:mb-16 max-w-2xl mx-auto px-4"
         >
           Real-world problem solving, systems thinking, and engineering work in progress
         </motion.p>
@@ -52,49 +52,49 @@ export default function Projects() {
           {featuredProject && (
             <motion.div
               variants={itemVariants}
-              className="bg-primary-charcoal border-2 border-accent-blue/30 rounded-lg p-6 md:p-8 hover:border-accent-blue/50 transition-all duration-300"
+              className="bg-primary-charcoal border-2 border-accent-blue/30 rounded-lg p-4 sm:p-6 md:p-8 hover:border-accent-blue/50 transition-all duration-300"
             >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
-                <h3 className="text-2xl md:text-3xl font-heading font-bold text-white">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4 sm:mb-5">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white break-words">
                   {featuredProject.title}
                 </h3>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded-full text-xs text-accent-emerald font-medium">
+                  <span className="px-2 sm:px-3 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded-full text-xs text-accent-emerald font-medium whitespace-nowrap">
                     {featuredProject.status}
                   </span>
                   {featuredProject.expectedCompletion && (
-                    <span className="text-xs text-secondary-gray">
+                    <span className="text-xs text-secondary-gray break-words">
                       (Expected: {featuredProject.expectedCompletion})
                     </span>
                   )}
                   {featuredProject.isCollaborative && (
-                    <span className="text-xs text-secondary-gray flex items-center gap-1">
-                      <Users size={12} />
+                    <span className="text-xs text-secondary-gray flex items-center gap-1 whitespace-nowrap">
+                      <Users size={12} className="flex-shrink-0" />
                       Collaborative project
                     </span>
                   )}
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div>
                   <h4 className="text-sm font-semibold text-white mb-2">Overview</h4>
-                  <p className="text-secondary-gray leading-relaxed">{featuredProject.overview}</p>
+                  <p className="text-sm sm:text-base text-secondary-gray leading-relaxed break-words">{featuredProject.overview}</p>
                 </div>
 
                 <div>
                   <h4 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
-                    <Code size={16} className="text-accent-emerald" />
+                    <Code size={16} className="text-accent-emerald flex-shrink-0" />
                     Focus
                   </h4>
-                  <p className="text-secondary-gray">
+                  <p className="text-sm sm:text-base text-secondary-gray break-words">
                     {featuredProject.technicalFocus.join(' · ')}
                   </p>
                 </div>
 
                 <div>
                   <h4 className="text-sm font-semibold text-white mb-2">My Role</h4>
-                  <p className="text-secondary-gray">
+                  <p className="text-sm sm:text-base text-secondary-gray break-words">
                     {featuredProject.role.join(' · ')}
                   </p>
                 </div>
@@ -103,43 +103,43 @@ export default function Projects() {
           )}
 
           {/* Other Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {otherProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
-                className="bg-primary-charcoal border border-white/10 rounded-lg p-6 hover:border-accent-blue/50 transition-all duration-300"
+                className="bg-primary-charcoal border border-white/10 rounded-lg p-4 sm:p-6 hover:border-accent-blue/50 transition-all duration-300"
               >
-                <div className="mb-4">
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="text-xl font-semibold text-white">
+                <div className="mb-3 sm:mb-4">
+                  <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white break-words flex-1 min-w-0">
                       {project.title}
                     </h3>
-                    <span className="px-2 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded text-xs text-accent-emerald font-medium whitespace-nowrap">
+                    <span className="px-2 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded text-xs text-accent-emerald font-medium whitespace-nowrap flex-shrink-0">
                       {project.status}
                     </span>
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div>
                     <h4 className="text-sm font-semibold text-white/80 mb-1">Overview</h4>
-                    <p className="text-sm text-secondary-gray leading-relaxed">{project.overview}</p>
+                    <p className="text-sm text-secondary-gray leading-relaxed break-words">{project.overview}</p>
                   </div>
 
                   <div>
                     <h4 className="text-sm font-semibold text-white/80 mb-1 flex items-center gap-2">
-                      <Code size={14} className="text-accent-emerald" />
+                      <Code size={14} className="text-accent-emerald flex-shrink-0" />
                       Focus
                     </h4>
-                    <p className="text-sm text-secondary-gray">
+                    <p className="text-sm text-secondary-gray break-words">
                       {project.technicalFocus.join(' · ')}
                     </p>
                   </div>
 
                   <div>
                     <h4 className="text-sm font-semibold text-white/80 mb-1">My Role</h4>
-                    <p className="text-sm text-secondary-gray">
+                    <p className="text-sm text-secondary-gray break-words">
                       {project.role.join(' · ')}
                     </p>
                   </div>

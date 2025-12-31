@@ -10,9 +10,9 @@ import Contact from './sections/Contact';
 function App() {
   try {
     return (
-      <div className="min-h-screen" style={{ backgroundColor: '#0a0a0a' }}>
+      <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#0a0a0a' }}>
         <Navbar />
-        <main>
+        <main className="w-full">
           <Hero />
           <About />
           <Experience />

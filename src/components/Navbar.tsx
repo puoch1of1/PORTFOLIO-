@@ -60,7 +60,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -78,12 +78,12 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-primary-charcoal border-t border-white/10"
           >
-            <div className="px-4 py-4 space-y-4">
+            <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-secondary-gray hover:text-white transition-colors"
+                  className="block text-secondary-gray hover:text-white transition-colors py-2 min-h-[44px] flex items-center touch-manipulation"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}

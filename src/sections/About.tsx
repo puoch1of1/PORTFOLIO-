@@ -19,7 +19,7 @@ const itemVariants = {
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-primary-charcoal">
+    <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-charcoal">
       <div className="max-w-4xl mx-auto">
         <motion.div
           variants={containerVariants}
@@ -29,14 +29,14 @@ export default function About() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-heading font-bold mb-12 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-10 sm:mb-12 text-center"
           >
             About
           </motion.h2>
 
           <motion.div
             variants={itemVariants}
-            className="space-y-8 text-lg text-secondary-gray leading-relaxed"
+            className="space-y-6 sm:space-y-8 text-base sm:text-lg text-secondary-gray leading-relaxed"
           >
             <div className="flex items-start gap-4 mb-6">
               <MapPin className="text-accent-blue mt-1 flex-shrink-0" size={24} />

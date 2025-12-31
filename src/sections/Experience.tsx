@@ -19,13 +19,13 @@ const itemVariants = {
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
+    <section id="experience" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
       <div className="max-w-5xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-heading font-bold mb-16 text-center"
+          className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-12 sm:mb-16 text-center"
         >
           Experience
         </motion.h2>
@@ -56,31 +56,31 @@ export default function Experience() {
                     index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                   }`}
                 >
-                  <div className="bg-primary-charcoal border border-white/10 rounded-lg p-6 hover:border-accent-blue/50 transition-all duration-300">
+                  <div className="bg-primary-charcoal border border-white/10 rounded-lg p-4 sm:p-6 hover:border-accent-blue/50 transition-all duration-300">
                     <div className="flex items-start gap-3 mb-4">
                       <Briefcase className="text-accent-blue flex-shrink-0 mt-1" size={20} />
-                      <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-1">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 break-words">
                           {exp.title}
                         </h3>
-                        <p className="text-accent-blue font-medium mb-2">
+                        <p className="text-accent-blue font-medium mb-2 break-words">
                           {exp.organization}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-secondary-gray mb-4">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-secondary-gray mb-4">
                       <div className="flex items-center gap-2">
-                        <Calendar size={16} />
-                        <span>{exp.period}</span>
+                        <Calendar size={14} className="flex-shrink-0" />
+                        <span className="break-words">{exp.period}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <MapPin size={16} />
-                        <span>{exp.location}</span>
+                        <MapPin size={14} className="flex-shrink-0" />
+                        <span className="break-words">{exp.location}</span>
                       </div>
                     </div>
 
-                    <p className="text-secondary-gray mb-4 leading-relaxed">
+                    <p className="text-sm sm:text-base text-secondary-gray mb-4 leading-relaxed break-words">
                       {exp.description}
                     </p>
 
