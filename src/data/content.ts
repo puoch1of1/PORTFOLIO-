@@ -129,7 +129,8 @@ export const projects = [
   {
     id: 2,
     title: "Dynasty Gym Management Application",
-    status: "In Progress",
+    status: "Private — In Progress",
+    isPrivate: true,
     overview: "A custom gym management system for Dynasty Gym in Juba, South Sudan, replacing manual tracking with a structured, scalable digital solution.",
     technicalFocus: [
       "System architecture",

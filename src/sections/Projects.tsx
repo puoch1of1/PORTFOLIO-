@@ -22,7 +22,10 @@ export default function Projects() {
   const otherProjects = projects.filter(p => !p.isFeatured);
 
   return (
-    <section id="projects" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
+    <section
+      id="projects"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark"
+    >
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -32,6 +35,7 @@ export default function Projects() {
         >
           Projects
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,18 +62,21 @@ export default function Projects() {
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white break-words">
                   {featuredProject.title}
                 </h3>
+
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="px-2 sm:px-3 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded-full text-xs text-accent-emerald font-medium whitespace-nowrap">
                     {featuredProject.status}
                   </span>
+
                   {featuredProject.expectedCompletion && (
-                    <span className="text-xs text-secondary-gray break-words">
+                    <span className="text-xs text-secondary-gray">
                       (Expected: {featuredProject.expectedCompletion})
                     </span>
                   )}
+
                   {featuredProject.isCollaborative && (
-                    <span className="text-xs text-secondary-gray flex items-center gap-1 whitespace-nowrap">
-                      <Users size={12} className="flex-shrink-0" />
+                    <span className="text-xs text-secondary-gray flex items-center gap-1">
+                      <Users size={12} />
                       Collaborative project
                     </span>
                   )}
@@ -79,22 +86,24 @@ export default function Projects() {
               <div className="space-y-3 sm:space-y-4">
                 <div>
                   <h4 className="text-sm font-semibold text-white mb-2">Overview</h4>
-                  <p className="text-sm sm:text-base text-secondary-gray leading-relaxed break-words">{featuredProject.overview}</p>
+                  <p className="text-sm sm:text-base text-secondary-gray leading-relaxed">
+                    {featuredProject.overview}
+                  </p>
                 </div>
 
                 <div>
                   <h4 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
-                    <Code size={16} className="text-accent-emerald flex-shrink-0" />
+                    <Code size={16} className="text-accent-emerald" />
                     Focus
                   </h4>
-                  <p className="text-sm sm:text-base text-secondary-gray break-words">
+                  <p className="text-sm sm:text-base text-secondary-gray">
                     {featuredProject.technicalFocus.join(' · ')}
                   </p>
                 </div>
 
                 <div>
                   <h4 className="text-sm font-semibold text-white mb-2">My Role</h4>
-                  <p className="text-sm sm:text-base text-secondary-gray break-words">
+                  <p className="text-sm sm:text-base text-secondary-gray">
                     {featuredProject.role.join(' · ')}
                   </p>
                 </div>
@@ -104,46 +113,73 @@ export default function Projects() {
 
           {/* Other Projects */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {otherProjects.map((project) => (
+            {otherProjects.map(project => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
-                className="bg-primary-charcoal border border-white/10 rounded-lg p-4 sm:p-6 hover:border-accent-blue/50 transition-all duration-300"
+                className={`relative bg-primary-charcoal border border-white/10 rounded-lg p-4 sm:p-6 transition-all duration-300
+                  ${project.isPrivate ? "overflow-hidden" : "hover:border-accent-blue/50"}
+                `}
               >
-                <div className="mb-3 sm:mb-4">
-                  <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
-                    <h3 className="text-lg sm:text-xl font-semibold text-white break-words flex-1 min-w-0">
-                      {project.title}
-                    </h3>
-                    <span className="px-2 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded text-xs text-accent-emerald font-medium whitespace-nowrap flex-shrink-0">
-                      {project.status}
+                {/* Blur content if private */}
+                <div
+                  className={
+                    project.isPrivate
+                      ? "blur-sm pointer-events-none select-none"
+                      : ""
+                  }
+                >
+                  <div className="mb-3 sm:mb-4">
+                    <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
+                      <h3 className="text-lg sm:text-xl font-semibold text-white flex-1">
+                        {project.title}
+                      </h3>
+
+                      <span className="px-2 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded text-xs text-accent-emerald font-medium">
+                        {project.status}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 sm:space-y-4">
+                    <div>
+                      <h4 className="text-sm font-semibold text-white/80 mb-1">
+                        Overview
+                      </h4>
+                      <p className="text-sm text-secondary-gray leading-relaxed">
+                        {project.overview}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-semibold text-white/80 mb-1 flex items-center gap-2">
+                        <Code size={14} className="text-accent-emerald" />
+                        Focus
+                      </h4>
+                      <p className="text-sm text-secondary-gray">
+                        {project.technicalFocus.join(' · ')}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-semibold text-white/80 mb-1">
+                        My Role
+                      </h4>
+                      <p className="text-sm text-secondary-gray">
+                        {project.role.join(' · ')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Private overlay */}
+                {project.isPrivate && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="bg-black/70 text-white text-xs sm:text-sm px-4 py-2 rounded-full backdrop-blur">
+                      Private Project
                     </span>
                   </div>
-                </div>
-
-                <div className="space-y-3 sm:space-y-4">
-                  <div>
-                    <h4 className="text-sm font-semibold text-white/80 mb-1">Overview</h4>
-                    <p className="text-sm text-secondary-gray leading-relaxed break-words">{project.overview}</p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-semibold text-white/80 mb-1 flex items-center gap-2">
-                      <Code size={14} className="text-accent-emerald flex-shrink-0" />
-                      Focus
-                    </h4>
-                    <p className="text-sm text-secondary-gray break-words">
-                      {project.technicalFocus.join(' · ')}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-semibold text-white/80 mb-1">My Role</h4>
-                    <p className="text-sm text-secondary-gray break-words">
-                      {project.role.join(' · ')}
-                    </p>
-                  </div>
-                </div>
+                )}
               </motion.div>
             ))}
           </div>
