@@ -4,6 +4,7 @@ import About from './sections/About';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
+import Articles from './sections/Articles';
 import Affiliations from './sections/Affiliations';
 import Contact from './sections/Contact';
 
@@ -18,6 +19,7 @@ function App() {
           <Experience />
           <Skills />
           <Projects />
+          <Articles />
           <Affiliations />
           <Contact />
         </main>

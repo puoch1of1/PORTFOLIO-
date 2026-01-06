@@ -212,3 +212,70 @@ export const socialLinks = {
 // Formspree form endpoint
 export const formspreeEndpoint = "https://formspree.io/f/xojvqawv";
 
+// ===== ARTICLES / WRITING =====
+// TypeScript interfaces for Medium articles
+export interface Article {
+  id: string;
+  title: string;
+  excerpt: string;
+  pubDate: string;
+  readingTime?: string;
+  link: string;
+  author?: string;
+}
+
+// Medium username for fetching articles
+// Change this to your Medium username to fetch real articles
+// Example: "puoch1of1" or your handle
+export const mediumUsername = "puoch1of1";
+
+// Mock articles for development/fallback
+// Replace with real data when RSS feed integration is live
+export const mockArticles: Article[] = [
+  {
+    id: "1",
+    title: "Building Secure Infrastructure in Resource-Constrained Environments",
+    excerpt: "Exploring practical approaches to cybersecurity when resources are limited. Infrastructure-first thinking applied to real-world challenges.",
+    pubDate: "2025-01-05T10:00:00Z",
+    readingTime: "8 min read",
+    link: "https://medium.com/@puoch1of1/building-secure-infrastructure",
+    author: "Puoch Mabor Makuei",
+  },
+  {
+    id: "2",
+    title: "Data Quality Assurance: Ensuring Integrity in Global Statistical Projects",
+    excerpt: "Lessons from volunteer data science work. How to maintain rigor and accuracy when working with international teams on high-impact projects.",
+    pubDate: "2024-12-28T14:30:00Z",
+    readingTime: "6 min read",
+    link: "https://medium.com/@puoch1of1/data-quality-assurance",
+    author: "Puoch Mabor Makuei",
+  },
+  {
+    id: "3",
+    title: "Understanding Network Monitoring: Spectrum Management and Infrastructure Oversight",
+    excerpt: "Technical deep dive into network performance evaluation and telecommunications infrastructure monitoring. From theory to practical implementation.",
+    pubDate: "2024-12-15T09:15:00Z",
+    readingTime: "12 min read",
+    link: "https://medium.com/@puoch1of1/network-monitoring-guide",
+    author: "Puoch Mabor Makuei",
+  },
+  {
+    id: "4",
+    title: "Infrastructure-First Thinking: A Framework for System Design",
+    excerpt: "Why starting with infrastructure concerns first leads to more resilient, scalable solutions. A practical framework for problem solving.",
+    pubDate: "2024-12-01T16:45:00Z",
+    readingTime: "10 min read",
+    link: "https://medium.com/@puoch1of1/infrastructure-first-thinking",
+    author: "Puoch Mabor Makuei",
+  },
+  {
+    id: "5",
+    title: "AI and Machine Learning for Infrastructure Systems",
+    excerpt: "How machine learning can be applied to network monitoring, anomaly detection, and predictive maintenance in telecommunications systems.",
+    pubDate: "2024-11-20T11:00:00Z",
+    readingTime: "9 min read",
+    link: "https://medium.com/@puoch1of1/ai-infrastructure-systems",
+    author: "Puoch Mabor Makuei",
+  },
+];
+
