@@ -8,26 +8,21 @@ export default {
     extend: {
       colors: {
         primary: {
-          dark: '#0f0f0f',
+          dark: '#0a0a0a',
           charcoal: '#1a1a1a',
-          light: '#f5f5f5',
-        },
-        neutral: {
-          slate: '#2d2d2d',
-          gray: '#4a4a4a',
-          muted: '#7a7a7a',
         },
         accent: {
-          steel: '#5a7a94', // Desaturated graphite-blue
+          blue: '#3b82f6',
+          emerald: '#10b981',
         },
         secondary: {
-          subtle: '#9a9a9a',
-          text: '#d4d4d4',
+          gray: '#6b7280',
+          light: '#f9fafb',
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        heading: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },
