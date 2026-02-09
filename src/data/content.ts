@@ -1,11 +1,11 @@
 // Portfolio content data - easily customizable
 export const personalInfo = {
   name: "Puoch Mabor Makuei",
-  title: "Data Engineer | Pipeline Architect",
-  specializations: ["Data Engineering", "ETL Pipelines", "Data Infrastructure"],
+  title: "Data Engineer | Computer Scientist",
+  specializations: ["Data Engineering", "Data Science", "Cybersecurity", "Infrastructure"],
   location: "South Sudan",
   email: "lomaspuoch502@gmail.com",
-  tagline: "Building scalable data infrastructure. Designing robust ETL pipelines that transform raw data into reliable, actionable insights for organizations across Africa and beyond.",
+  tagline: "Building scalable data infrastructure and secure systems. Specializing in ETL pipelines, data analytics, and infrastructure security for organizations across Africa and beyond.",
 };
 
 export const about = {
@@ -15,10 +15,10 @@ export const about = {
     degree: "Bachelor of Science in Computer Science",
     institution: "Uganda Christian University",
   },
-  narrative: `I'm a data engineer driven by the challenge of building reliable data infrastructure at scale. My work focuses on designing and implementing ETL pipelines, optimizing data flows, and creating scalable systems that turn raw, chaotic data into structured, actionable insights.
+  narrative: `I'm a computer scientist with a focus on data engineering, infrastructure, and security. My work centers on building reliable data pipelines, analyzing complex data patterns, and ensuring system integrity at scale. I design ETL workflows that transform raw data into actionable insights while maintaining security and reliability standards.
 
-I approach data engineering with an infrastructure-first mindset—thinking about data quality, pipeline reliability, and system scalability from the ground up. Whether it's building batch processing workflows, implementing real-time data streams, or ensuring data integrity across distributed systems, I'm passionate about creating the foundational data pipelines that power organizational decision-making.`,
-  philosophy: "Data pipelines are the nervous system of modern organizations. My role is to build infrastructure that's not just functional, but resilient, scalable, and maintainable—transforming chaos into clarity.",
+I approach problems with an infrastructure-first mindset—thinking about data quality, system scalability, and security from the ground up. Whether it's building data processing pipelines, monitoring telecommunications networks, or implementing data validation workflows, I'm passionate about creating robust technical solutions that combine data engineering practices with security awareness and analytical rigor.`,
+  philosophy: "Data pipelines are critical infrastructure. My role is to build systems that are secure, scalable, and reliable—transforming raw data into organizational intelligence while maintaining integrity every step of the way.",
 };
 
 export const experiences = [
@@ -84,27 +84,29 @@ export const skills = {
     "Data Modeling",
     "Apache Spark",
     "Apache Airflow",
+    "Apache Kafka",
     "Data Quality Assurance",
   ],
-  "Programming & Databases": [
+  "Data Science & Analytics": [
     "Python",
     "SQL",
     "Pandas",
     "NumPy",
-    "Database Design",
+    "Data Analysis",
+    "Machine Learning Fundamentals",
   ],
-  "Data Infrastructure": [
-    "Apache Kafka",
-    "Batch Processing",
-    "Stream Processing",
-    "Data Warehousing",
+  "Infrastructure & Security": [
+    "Network Security",
     "Infrastructure Monitoring",
-  ],
-  "Tools & Practices": [
-    "Data Pipeline Orchestration",
-    "Data Validation",
-    "Technical Documentation",
     "System Architecture",
+    "Database Design",
+    "Security Assessment",
+  ],
+  "Tools & Technologies": [
+    "Data Pipeline Orchestration",
+    "Batch/Stream Processing",
+    "Technical Documentation",
+    "Remote Collaboration",
   ],
 };
 
