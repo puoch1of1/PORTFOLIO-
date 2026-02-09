@@ -1,11 +1,11 @@
 // Portfolio content data - easily customizable
 export const personalInfo = {
   name: "Puoch Mabor Makuei",
-  title: "Computer Scientist",
-  specializations: ["Cybersecurity", "Artificial Intelligence", "Data Science"],
+  title: "Data Engineer | Pipeline Architect",
+  specializations: ["Data Engineering", "ETL Pipelines", "Data Infrastructure"],
   location: "South Sudan",
   email: "lomaspuoch502@gmail.com",
-  tagline: "Building secure systems, analyzing complex data, and developing intelligent solutions for infrastructure challenges across Africa and beyond.",
+  tagline: "Building scalable data infrastructure. Designing robust ETL pipelines that transform raw data into reliable, actionable insights for organizations across Africa and beyond.",
 };
 
 export const about = {
@@ -15,9 +15,10 @@ export const about = {
     degree: "Bachelor of Science in Computer Science",
     institution: "Uganda Christian University",
   },
-  narrative: `I'm a computer scientist driven by curiosity and discipline, with a deep interest in systems, networks, and data. My work focuses on understanding infrastructure—how systems connect, how data flows, and how we can build more secure and intelligent solutions.
+  narrative: `I'm a data engineer driven by the challenge of building reliable data infrastructure at scale. My work focuses on designing and implementing ETL pipelines, optimizing data flows, and creating scalable systems that turn raw, chaotic data into structured, actionable insights.
 
-I approach problems with an infrastructure-first mindset, thinking about reliability, scalability, and security from the ground up. Whether it's monitoring telecommunications networks, analyzing data patterns, or securing systems, I'm interested in the fundamentals that make technology work reliably at scale.`,
+I approach data engineering with an infrastructure-first mindset—thinking about data quality, pipeline reliability, and system scalability from the ground up. Whether it's building batch processing workflows, implementing real-time data streams, or ensuring data integrity across distributed systems, I'm passionate about creating the foundational data pipelines that power organizational decision-making.`,
+  philosophy: "Data pipelines are the nervous system of modern organizations. My role is to build infrastructure that's not just functional, but resilient, scalable, and maintainable—transforming chaos into clarity.",
 };
 
 export const experiences = [
@@ -78,51 +79,57 @@ export const experiences = [
 ];
 
 export const skills = {
-  "Cybersecurity": [
-    "Network Security",
-    "Infrastructure Monitoring",
-    "Security Assessment",
+  "Data Engineering & ETL": [
+    "ETL Pipeline Design",
+    "Data Modeling",
+    "Apache Spark",
+    "Apache Airflow",
+    "Data Quality Assurance",
   ],
-  "AI & Data Science": [
+  "Programming & Databases": [
     "Python",
     "SQL",
-    "Data Analysis",
-    "Machine Learning Fundamentals",
+    "Pandas",
+    "NumPy",
+    "Database Design",
   ],
-  "Infrastructure & Networking": [
-    "LAN Administration",
-    "Network Performance Evaluation",
-    "Spectrum Management",
-    "Telecommunications Systems",
+  "Data Infrastructure": [
+    "Apache Kafka",
+    "Batch Processing",
+    "Stream Processing",
+    "Data Warehousing",
+    "Infrastructure Monitoring",
   ],
-  "Tools & Technologies": [
+  "Tools & Practices": [
+    "Data Pipeline Orchestration",
+    "Data Validation",
     "Technical Documentation",
-    "Remote Collaboration",
-    "System Administration",
+    "System Architecture",
   ],
 };
 
 export const projects = [
   {
     id: 1,
-    title: "AI-Driven Medicine Supply Forecasting System",
+    title: "Medicine Supply Data Pipeline & Forecasting System",
     status: "Final Year Project — In Progress",
     expectedCompletion: "May",
     isCollaborative: true,
-    overview: "An AI-based system addressing drug stockouts and medicine expiries in Uganda's medical sector through predictive modeling and improved demand forecasting.",
+    overview: "A data engineering solution addressing drug stockouts and medicine expiries in Uganda's medical sector through automated ETL pipelines, data quality validation, and predictive analytics infrastructure.",
     technicalFocus: [
-      "Time-series forecasting",
-      "Data preprocessing",
-      "Model evaluation",
-      "Inventory data pipelines (CSV/Excel)"
+      "ETL pipeline design for inventory data",
+      "Data cleaning and validation workflows",
+      "Time-series data modeling",
+      "Automated data ingestion (CSV/Excel)",
+      "Data quality monitoring"
     ],
     role: [
-      "Data analysis",
-      "Model design",
-      "System logic",
-      "Documentation"
+      "Data pipeline architecture",
+      "ETL workflow implementation",
+      "Data quality assurance",
+      "System documentation"
     ],
-    tools: ["Python", "Time-Series Analysis", "Machine Learning", "Data Preprocessing"],
+    tools: ["Python", "Pandas", "SQL", "Data Pipeline Design", "ETL"],
     isFeatured: true,
     github: null,
   },
