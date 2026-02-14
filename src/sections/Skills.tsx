@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-charcoal">
+    <section id="skills" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -50,19 +50,19 @@ export default function Skills() {
               <motion.div
                 key={category}
                 variants={itemVariants}
-                className="bg-primary-dark border border-white/10 rounded-lg p-4 sm:p-6 hover:border-accent-blue/50 transition-all duration-300"
+                className="bg-white border border-black/10 rounded-lg p-4 sm:p-6 hover:border-black/30 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                  <div className="p-2 bg-accent-blue/20 rounded-lg flex-shrink-0">
-                    <Icon className="text-accent-blue" size={20} />
+                  <div className="p-2 bg-black/10 rounded-lg flex-shrink-0">
+                    <Icon className="text-black" size={20} />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white break-words">{category}</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-black break-words">{category}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {skillList.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/5 border border-white/10 rounded-md text-xs sm:text-sm text-secondary-gray hover:border-accent-emerald/50 hover:text-accent-emerald transition-colors break-words"
+                      className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/5 border border-black/10 rounded-md text-xs sm:text-sm text-secondary-gray hover:border-gray-700/50 hover:text-gray-700 transition-colors break-words"
                     >
                       {skill}
                     </span>
