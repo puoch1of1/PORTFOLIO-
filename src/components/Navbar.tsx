@@ -28,8 +28,8 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-primary-charcoal/95 backdrop-blur-sm border-b border-white/10'
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-sm border-b border-black/10 shadow-sm'
+          : 'bg-white/80 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a
             href="#"
-            className="text-xl font-heading font-semibold text-white hover:text-accent-blue transition-colors"
+            className="text-xl font-heading font-semibold text-black hover:text-secondary-gray transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -50,17 +50,17 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm text-secondary-gray hover:text-white transition-colors relative group"
+                className="text-sm text-secondary-gray hover:text-black transition-colors relative group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-blue group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation"
+            className="md:hidden text-black p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -76,14 +76,14 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-primary-charcoal border-t border-white/10"
+            className="md:hidden bg-white border-t border-black/10"
           >
             <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-secondary-gray hover:text-white transition-colors py-2 min-h-[44px] flex items-center touch-manipulation"
+                  className="block text-secondary-gray hover:text-black transition-colors py-2 min-h-[44px] flex items-center touch-manipulation"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
