@@ -24,7 +24,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-white"
     >
       <div className="max-w-6xl mx-auto">
         <motion.h2
@@ -56,15 +56,15 @@ export default function Projects() {
           {featuredProject && (
             <motion.div
               variants={itemVariants}
-              className="bg-primary-charcoal border-2 border-accent-blue/30 rounded-lg p-4 sm:p-6 md:p-8 hover:border-accent-blue/50 transition-all duration-300"
+              className="bg-gray-50 border-2 border-black/20 rounded-lg p-4 sm:p-6 md:p-8 hover:border-black/40 transition-all duration-300"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4 sm:mb-5">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white break-words">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-black break-words">
                   {featuredProject.title}
                 </h3>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-2 sm:px-3 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded-full text-xs text-accent-emerald font-medium whitespace-nowrap">
+                  <span className="px-2 sm:px-3 py-1 bg-gray-200 border border-gray-400 rounded-full text-xs text-gray-700 font-medium whitespace-nowrap">
                     {featuredProject.status}
                   </span>
 
@@ -85,15 +85,15 @@ export default function Projects() {
 
               <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <h4 className="text-sm font-semibold text-white mb-2">Overview</h4>
+                  <h4 className="text-sm font-semibold text-black mb-2">Overview</h4>
                   <p className="text-sm sm:text-base text-secondary-gray leading-relaxed">
                     {featuredProject.overview}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
-                    <Code size={16} className="text-accent-emerald" />
+                  <h4 className="text-sm font-semibold text-black mb-2 flex items-center gap-2">
+                    <Code size={16} className="text-gray-700" />
                     Focus
                   </h4>
                   <p className="text-sm sm:text-base text-secondary-gray">
@@ -102,7 +102,7 @@ export default function Projects() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-semibold text-white mb-2">My Role</h4>
+                  <h4 className="text-sm font-semibold text-black mb-2">My Role</h4>
                   <p className="text-sm sm:text-base text-secondary-gray">
                     {featuredProject.role.join(' · ')}
                   </p>
@@ -117,8 +117,8 @@ export default function Projects() {
               <motion.div
                 key={project.id}
                 variants={itemVariants}
-                className={`relative bg-primary-charcoal border border-white/10 rounded-lg p-4 sm:p-6 transition-all duration-300
-                  ${project.isPrivate ? "overflow-hidden" : "hover:border-accent-blue/50"}
+                className={`relative bg-gray-50 border border-black/10 rounded-lg p-4 sm:p-6 transition-all duration-300
+                  ${project.isPrivate ? "overflow-hidden" : "hover:border-black/30"}
                 `}
               >
                 {/* Blur content if private */}
@@ -131,11 +131,11 @@ export default function Projects() {
                 >
                   <div className="mb-3 sm:mb-4">
                     <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
-                      <h3 className="text-lg sm:text-xl font-semibold text-white flex-1">
+                      <h3 className="text-lg sm:text-xl font-semibold text-black flex-1">
                         {project.title}
                       </h3>
 
-                      <span className="px-2 py-1 bg-accent-emerald/20 border border-accent-emerald/40 rounded text-xs text-accent-emerald font-medium">
+                      <span className="px-2 py-1 bg-gray-200 border border-gray-400 rounded text-xs text-gray-700 font-medium">
                         {project.status}
                       </span>
                     </div>
@@ -143,7 +143,7 @@ export default function Projects() {
 
                   <div className="space-y-3 sm:space-y-4">
                     <div>
-                      <h4 className="text-sm font-semibold text-white/80 mb-1">
+                      <h4 className="text-sm font-semibold text-black/80 mb-1">
                         Overview
                       </h4>
                       <p className="text-sm text-secondary-gray leading-relaxed">
@@ -152,8 +152,8 @@ export default function Projects() {
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-semibold text-white/80 mb-1 flex items-center gap-2">
-                        <Code size={14} className="text-accent-emerald" />
+                      <h4 className="text-sm font-semibold text-black/80 mb-1 flex items-center gap-2">
+                        <Code size={14} className="text-gray-700" />
                         Focus
                       </h4>
                       <p className="text-sm text-secondary-gray">
@@ -162,7 +162,7 @@ export default function Projects() {
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-semibold text-white/80 mb-1">
+                      <h4 className="text-sm font-semibold text-black/80 mb-1">
                         My Role
                       </h4>
                       <p className="text-sm text-secondary-gray">
