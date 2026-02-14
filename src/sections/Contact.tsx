@@ -70,7 +70,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-dark">
+    <section id="contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-white mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 Name
               </label>
@@ -111,7 +111,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-primary-charcoal border border-white/10 rounded-lg text-white placeholder-secondary-gray focus:outline-none focus:border-accent-blue transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 border border-black/10 rounded-lg text-black placeholder-secondary-gray focus:outline-none focus:border-black transition-colors"
                 placeholder="Your name"
                 disabled={isSubmitting}
               />
@@ -120,7 +120,7 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-white mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 Email
               </label>
@@ -131,7 +131,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-primary-charcoal border border-white/10 rounded-lg text-white placeholder-secondary-gray focus:outline-none focus:border-accent-blue transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 border border-black/10 rounded-lg text-black placeholder-secondary-gray focus:outline-none focus:border-black transition-colors"
                 placeholder="your.email@example.com"
                 disabled={isSubmitting}
               />
@@ -140,7 +140,7 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-white mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 Message
               </label>
@@ -151,7 +151,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="w-full px-4 py-3 bg-primary-charcoal border border-white/10 rounded-lg text-white placeholder-secondary-gray focus:outline-none focus:border-accent-blue transition-colors resize-none"
+                className="w-full px-4 py-3 bg-gray-50 border border-black/10 rounded-lg text-black placeholder-secondary-gray focus:outline-none focus:border-black transition-colors resize-none"
                 placeholder="Tell me about your project, opportunity, or just say hello..."
                 disabled={isSubmitting}
               />
@@ -162,7 +162,7 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex items-center gap-2 p-4 bg-accent-emerald/20 border border-accent-emerald/40 rounded-lg text-accent-emerald"
+                className="flex items-center gap-2 p-4 bg-gray-200 border border-gray-400 rounded-lg text-gray-700"
               >
                 <CheckCircle size={20} />
                 <p className="text-sm font-medium">
@@ -193,7 +193,7 @@ export default function Contact() {
               disabled={isSubmitting}
               whileHover={!isSubmitting ? { scale: 1.02 } : {}}
               whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-              className="w-full px-6 py-3 bg-accent-blue text-white rounded-lg font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full px-6 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -217,7 +217,7 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-semibold text-white mb-6">
+              <h3 className="text-2xl font-semibold text-black mb-6">
                 Let's Connect
               </h3>
               <p className="text-secondary-gray mb-8 leading-relaxed">
@@ -229,13 +229,13 @@ export default function Contact() {
             <div className="space-y-4">
               <a
                 href={socialLinks.email}
-                className="flex items-center gap-4 p-4 bg-primary-charcoal border border-white/10 rounded-lg hover:border-accent-blue/50 transition-all group"
+                className="flex items-center gap-4 p-4 bg-gray-50 border border-black/10 rounded-lg hover:border-black/30 transition-all group"
               >
-                <div className="p-2 bg-accent-blue/20 rounded-lg group-hover:bg-accent-blue/30 transition-colors">
-                  <Mail className="text-accent-blue" size={24} />
+                <div className="p-2 bg-black/10 rounded-lg group-hover:bg-black/20 transition-colors">
+                  <Mail className="text-black" size={24} />
                 </div>
                 <div>
-                  <p className="text-white font-medium group-hover:text-accent-blue transition-colors">
+                  <p className="text-black font-medium group-hover:text-gray-700 transition-colors">
                     Email
                   </p>
                   <p className="text-sm text-secondary-gray break-words">{personalInfo.email}</p>
@@ -246,13 +246,13 @@ export default function Contact() {
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-primary-charcoal border border-white/10 rounded-lg hover:border-accent-blue/50 transition-all group"
+                className="flex items-center gap-4 p-4 bg-gray-50 border border-black/10 rounded-lg hover:border-black/30 transition-all group"
               >
-                <div className="p-2 bg-accent-blue/20 rounded-lg group-hover:bg-accent-blue/30 transition-colors">
-                  <Linkedin className="text-accent-blue" size={24} />
+                <div className="p-2 bg-black/10 rounded-lg group-hover:bg-black/20 transition-colors">
+                  <Linkedin className="text-black" size={24} />
                 </div>
                 <div>
-                  <p className="text-white font-medium group-hover:text-accent-blue transition-colors">
+                  <p className="text-black font-medium group-hover:text-gray-700 transition-colors">
                     LinkedIn
                   </p>
                   <p className="text-sm text-secondary-gray">Connect professionally</p>
@@ -263,13 +263,13 @@ export default function Contact() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-primary-charcoal border border-white/10 rounded-lg hover:border-accent-blue/50 transition-all group"
+                className="flex items-center gap-4 p-4 bg-gray-50 border border-black/10 rounded-lg hover:border-black/30 transition-all group"
               >
-                <div className="p-2 bg-accent-blue/20 rounded-lg group-hover:bg-accent-blue/30 transition-colors">
-                  <Github className="text-accent-blue" size={24} />
+                <div className="p-2 bg-black/10 rounded-lg group-hover:bg-black/20 transition-colors">
+                  <Github className="text-black" size={24} />
                 </div>
                 <div>
-                  <p className="text-white font-medium group-hover:text-accent-blue transition-colors">
+                  <p className="text-black font-medium group-hover:text-gray-700 transition-colors">
                     GitHub
                   </p>
                   <p className="text-sm text-secondary-gray">View my code</p>

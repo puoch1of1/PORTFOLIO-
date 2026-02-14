@@ -19,7 +19,7 @@ const itemVariants = {
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-charcoal">
+    <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-4xl mx-auto">
         <motion.div
           variants={containerVariants}
@@ -39,23 +39,23 @@ export default function About() {
             className="space-y-6 sm:space-y-8 text-base sm:text-lg text-secondary-gray leading-relaxed"
           >
             <div className="flex items-start gap-4 mb-6">
-              <MapPin className="text-accent-blue mt-1 flex-shrink-0" size={24} />
+              <MapPin className="text-black mt-1 flex-shrink-0" size={24} />
               <div>
-                <p className="text-white font-semibold mb-2">{about.name}</p>
+                <p className="text-black font-semibold mb-2">{about.name}</p>
                 <p className="text-secondary-gray">{about.origin}</p>
               </div>
             </div>
 
             <div className="flex items-start gap-4 mb-6">
-              <GraduationCap className="text-accent-emerald mt-1 flex-shrink-0" size={24} />
+              <GraduationCap className="text-gray-700 mt-1 flex-shrink-0" size={24} />
               <div>
-                <p className="text-white font-semibold mb-2">{about.education.degree}</p>
+                <p className="text-black font-semibold mb-2">{about.education.degree}</p>
                 <p className="text-secondary-gray">{about.education.institution}</p>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-white/10">
-              <p className="text-white/90 leading-relaxed whitespace-pre-line">
+            <div className="pt-6 border-t border-black/10">
+              <p className="text-black/90 leading-relaxed whitespace-pre-line">
                 {about.narrative}
               </p>
             </div>
