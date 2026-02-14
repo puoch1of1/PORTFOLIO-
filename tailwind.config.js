@@ -8,16 +8,16 @@ export default {
     extend: {
       colors: {
         primary: {
-          dark: '#0a0a0a',
-          charcoal: '#1a1a1a',
+          dark: '#000000',
+          charcoal: '#f5f5f5',
         },
         accent: {
-          blue: '#3b82f6',
-          emerald: '#10b981',
+          blue: '#1a1a1a',
+          emerald: '#2d2d2d',
         },
         secondary: {
-          gray: '#6b7280',
-          light: '#f9fafb',
+          gray: '#404040',
+          light: '#ffffff',
         }
       },
       fontFamily: {

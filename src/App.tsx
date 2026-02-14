@@ -10,7 +10,7 @@ import Contact from './sections/Contact';
 function App() {
   try {
     return (
-      <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#0a0a0a' }}>
+      <div className="min-h-screen overflow-x-hidden bg-white">
         <Navbar />
         <main className="w-full">
           <Hero />
@@ -21,9 +21,9 @@ function App() {
           <Affiliations />
           <Contact />
         </main>
-      <footer className="bg-primary-charcoal border-t border-white/10 py-8 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-primary-charcoal border-t border-black/10 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center text-secondary-gray text-sm space-y-2">
-          <p className="text-accent-blue font-medium">Engineering data pipelines. Building at scale. Transforming chaos into clarity.</p>
+          <p className="text-black font-medium">Engineering data pipelines. Building at scale. Transforming chaos into clarity.</p>
           <p>© {new Date().getFullYear()} Puoch Mabor Makuei. All rights reserved.</p>
         </div>
       </footer>
