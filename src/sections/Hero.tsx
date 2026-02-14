@@ -5,12 +5,12 @@ import { personalInfo } from '../data/content';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-charcoal via-primary-dark to-primary-charcoal">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.03),transparent_50%)]" />
         <motion.div
-          className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent-blue/20 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-black/5 rounded-full blur-3xl"
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -23,7 +23,7 @@ export default function Hero() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent-emerald/20 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-gray-900/5 rounded-full blur-3xl"
           animate={{
             x: [0, -100, 0],
             y: [0, -50, 0],
@@ -45,7 +45,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-4 sm:mb-6 text-balance px-2"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-4 sm:mb-6 text-balance px-2 text-black"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -71,7 +71,7 @@ export default function Hero() {
             {personalInfo.specializations.map((spec) => (
               <span
                 key={spec}
-                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xs sm:text-sm text-secondary-gray break-words"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/5 backdrop-blur-sm border border-black/10 rounded-full text-xs sm:text-sm text-secondary-gray break-words"
               >
                 {spec}
               </span>
