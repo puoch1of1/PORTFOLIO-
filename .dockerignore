@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+.git
+.gitignore
+.vscode
+.DS_Store
+*.log
+npm-debug.log*
+.env
+.env.*
+Dockerfile
+README.md
+GITHUB_PAGES_SETUP.md
