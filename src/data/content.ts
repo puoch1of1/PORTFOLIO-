@@ -211,6 +211,36 @@ export const affiliations = [
   },
 ];
 
+export const articles = [
+  {
+    id: 1,
+    title: "Building Scalable ETL Pipelines for Healthcare Data in East Africa",
+    description: "How I designed a data pipeline to address medicine stockouts and improve pharmaceutical supply chain visibility in Uganda.",
+    date: "January 2026",
+    readTime: "8 min read",
+    tags: ["Data Engineering", "ETL", "Healthcare"],
+    url: "https://medium.com/@yourusername/article-slug-1",
+  },
+  {
+    id: 2,
+    title: "Data Quality Assurance: Lessons from Statistics Without Borders",
+    description: "Key takeaways from reviewing datasets and analytical deliverables for global humanitarian projects.",
+    date: "December 2025",
+    readTime: "6 min read",
+    tags: ["Data Quality", "Volunteering", "Statistics"],
+    url: "https://medium.com/@yourusername/article-slug-2",
+  },
+  {
+    id: 3,
+    title: "From Chaos to Clarity: Infrastructure Monitoring at a National Level",
+    description: "Reflections on monitoring telecommunications infrastructure and evaluating network performance at South Sudan's NCA.",
+    date: "November 2025",
+    readTime: "5 min read",
+    tags: ["Infrastructure", "Cybersecurity", "Telecom"],
+    url: "https://medium.com/@yourusername/article-slug-3",
+  },
+];
+
 export const socialLinks = {
   github: "https://github.com/puoch1of1",
   linkedin: "https://www.linkedin.com/in/puoch-mabor-makuei-490252320/",
