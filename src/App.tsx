@@ -5,6 +5,7 @@ import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Affiliations from './sections/Affiliations';
+import Articles from './sections/Articles';
 import Contact from './sections/Contact';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Skills />
           <Projects />
           <Affiliations />
+          <Articles />
           <Contact />
         </main>
       <footer className="bg-primary-charcoal border-t border-black/10 py-8 px-4 sm:px-6 lg:px-8">
