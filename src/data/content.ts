@@ -141,40 +141,40 @@ export const projects = [
     title: "Synod",
     status: "Open Source Contribution",
     isCollaborative: true,
-    overview: "Open source project forked from GenoJ83. Contributing to collaborative development and community-driven improvements.",
+    overview: "An intelligent lecture and course content assistant that transforms dense academic materials into structured, digestible knowledge. Uses NLP to extract key concepts, generate summaries, and produce revision questions from PDFs and slides.",
     technicalFocus: [
-      "Open source collaboration",
-      "Community contribution",
-      "Version control",
-      "Peer review process"
+      "Natural Language Processing",
+      "Transformer models & TF-IDF",
+      "PDF/PPTX content extraction",
+      "Concept ranking & summarization"
     ],
     role: [
       "Contributor",
       "Feature development",
-      "Code review"
+      "NLP implementation"
     ],
-    tools: ["Git", "GitHub", "Collaborative Development"],
+    tools: ["Python", "NLP", "Transformers", "TextRank"],
     isFeatured: false,
     github: "https://github.com/puoch1of1/Synod",
   },
   {
     id: 3,
     title: "Group Delta Project",
-    status: "Collaborative Development",
+    status: "In Progress",
     isCollaborative: true,
-    overview: "A collaborative group project demonstrating teamwork, shared development practices, and collective problem-solving in a team environment.",
+    overview: "Medicine supply forecasting system developed by Team Delta. Addresses drug stockouts in Uganda through automated ETL pipelines, data validation, and predictive analytics for pharmaceutical supply chain optimization.",
     technicalFocus: [
-      "Team collaboration",
-      "Agile development",
-      "Shared codebase",
-      "Integration testing"
+      "ETL pipeline development",
+      "Data validation workflows",
+      "Predictive modeling",
+      "Supply chain analytics"
     ],
     role: [
       "Team member",
-      "Feature development",
-      "Code integration"
+      "Pipeline development",
+      "Data quality assurance"
     ],
-    tools: ["Git", "GitHub", "Collaborative Development"],
+    tools: ["Python", "Pandas", "SQL", "Machine Learning"],
     isFeatured: false,
     github: "https://github.com/Moses141/Group-Delta-Project",
   },
@@ -183,19 +183,19 @@ export const projects = [
     title: "Back and Forth - Agon AI Debate Site",
     status: "In Progress",
     isCollaborative: false,
-    overview: "An AI-powered debate platform where users can engage in structured argumentation and debate with AI-assisted analysis and feedback.",
+    overview: "A live AI debate engine where autonomous agents clash over user-submitted questions. Generates structured arguments, counterarguments, and synthesized conclusions, enabling users to explore different perspectives on complex topics.",
     technicalFocus: [
-      "Full-stack web development",
-      "AI integration",
-      "Debate logic implementation",
-      "User interface design"
+      "AI agent orchestration",
+      "Argument generation & analysis",
+      "Real-time debate logic",
+      "Synthesis algorithms"
     ],
     role: [
       "Full-stack development",
-      "Architecture design",
-      "Feature implementation"
+      "AI integration",
+      "Debate engine design"
     ],
-    tools: ["Web Development", "AI Integration", "Database Design"],
+    tools: ["Web Development", "AI/LLM Integration", "Real-time Systems"],
     isFeatured: false,
     github: "https://github.com/puoch1of1/back-and-forth",
   },
