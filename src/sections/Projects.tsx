@@ -336,3 +336,8 @@ export default function Projects() {
               </div>
             </div>
           )}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
