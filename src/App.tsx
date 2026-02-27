@@ -19,8 +19,8 @@ function App() {
           <Experience />
           <Skills />
           <Projects />
-          <Affiliations />
           <Articles />
+          <Affiliations />
           <Contact />
         </main>
       <footer className="bg-primary-charcoal border-t border-black/10 py-8 px-4 sm:px-6 lg:px-8">
