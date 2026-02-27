@@ -132,9 +132,8 @@ export const projects = [
       "System documentation"
     ],
     tools: ["Python", "Pandas", "SQL", "Data Pipeline Design", "ETL"],
-    isFeatured: true,
-    isCollaborative: true,
-    github: null,
+    isFeatured: false,
+    github: "https://github.com/Moses141/Group-Delta-Project",
   },
   {
     id: 2,
@@ -159,27 +158,6 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Group Delta Project",
-    status: "In Progress",
-    isCollaborative: true,
-    overview: "Medicine supply forecasting system developed by Team Delta. Addresses drug stockouts in Uganda through automated ETL pipelines, data validation, and predictive analytics for pharmaceutical supply chain optimization.",
-    technicalFocus: [
-      "ETL pipeline development",
-      "Data validation workflows",
-      "Predictive modeling",
-      "Supply chain analytics"
-    ],
-    role: [
-      "Team member",
-      "Pipeline development",
-      "Data quality assurance"
-    ],
-    tools: ["Python", "Pandas", "SQL", "Machine Learning"],
-    isFeatured: false,
-    github: "https://github.com/Moses141/Group-Delta-Project",
-  },
-  {
-    id: 4,
     title: "Back and Forth - Agon AI Debate Site",
     status: "In Progress",
     isCollaborative: false,
@@ -200,7 +178,7 @@ export const projects = [
     github: "https://github.com/puoch1of1/back-and-forth",
   },
   {
-    id: 5,
+    id: 4,
     title: "Ngimuria Travel Agency Website",
     status: "In Progress",
     isCollaborative: false,
@@ -221,7 +199,7 @@ export const projects = [
     github: null,
   },
   {
-    id: 6,
+    id: 5,
     title: "Dynasty Gym Management Application",
     status: "Private — In Progress",
     isPrivate: true,
