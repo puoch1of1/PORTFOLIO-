@@ -133,33 +133,77 @@ export const projects = [
     ],
     tools: ["Python", "Pandas", "SQL", "Data Pipeline Design", "ETL"],
     isFeatured: true,
+    isCollaborative: true,
     github: null,
   },
   {
     id: 2,
-    title: "Dynasty Gym Management Application",
-    status: "Private — In Progress",
-    isPrivate: true,
-    overview: "A custom gym management system for Dynasty Gym in Juba, South Sudan, replacing manual tracking with a structured, scalable digital solution.",
+    title: "Synod",
+    status: "Open Source Contribution",
+    isCollaborative: true,
+    overview: "Open source project forked from GenoJ83. Contributing to collaborative development and community-driven improvements.",
     technicalFocus: [
-      "System architecture",
-      "Member & subscription management",
-      "Attendance tracking",
-      "Database design"
+      "Open source collaboration",
+      "Community contribution",
+      "Version control",
+      "Peer review process"
     ],
     role: [
-      "Architecture design",
-      "Core functionality",
-      "Database implementation"
+      "Contributor",
+      "Feature development",
+      "Code review"
     ],
-    tools: ["Web Development", "Database Design", "System Architecture"],
+    tools: ["Git", "GitHub", "Collaborative Development"],
     isFeatured: false,
-    github: null,
+    github: "https://github.com/puoch1of1/Synod",
   },
   {
     id: 3,
+    title: "Group Delta Project",
+    status: "Collaborative Development",
+    isCollaborative: true,
+    overview: "A collaborative group project demonstrating teamwork, shared development practices, and collective problem-solving in a team environment.",
+    technicalFocus: [
+      "Team collaboration",
+      "Agile development",
+      "Shared codebase",
+      "Integration testing"
+    ],
+    role: [
+      "Team member",
+      "Feature development",
+      "Code integration"
+    ],
+    tools: ["Git", "GitHub", "Collaborative Development"],
+    isFeatured: false,
+    github: "https://github.com/Moses141/Group-Delta-Project",
+  },
+  {
+    id: 4,
+    title: "Back and Forth - Agon AI Debate Site",
+    status: "In Progress",
+    isCollaborative: false,
+    overview: "An AI-powered debate platform where users can engage in structured argumentation and debate with AI-assisted analysis and feedback.",
+    technicalFocus: [
+      "Full-stack web development",
+      "AI integration",
+      "Debate logic implementation",
+      "User interface design"
+    ],
+    role: [
+      "Full-stack development",
+      "Architecture design",
+      "Feature implementation"
+    ],
+    tools: ["Web Development", "AI Integration", "Database Design"],
+    isFeatured: false,
+    github: "https://github.com/puoch1of1/back-and-forth",
+  },
+  {
+    id: 5,
     title: "Ngimuria Travel Agency Website",
     status: "In Progress",
+    isCollaborative: false,
     overview: "A professional website for a tourism company operating in Eastern Uganda and the Turkana region of Kenya, built to establish online presence and client trust.",
     technicalFocus: [
       "Responsive web design",
@@ -173,6 +217,28 @@ export const projects = [
       "Client requirements gathering"
     ],
     tools: ["Web Development", "Responsive Design", "Performance Optimization"],
+    isFeatured: false,
+    github: null,
+  },
+  {
+    id: 6,
+    title: "Dynasty Gym Management Application",
+    status: "Private — In Progress",
+    isPrivate: true,
+    isCollaborative: false,
+    overview: "A custom gym management system for Dynasty Gym in Juba, South Sudan, replacing manual tracking with a structured, scalable digital solution.",
+    technicalFocus: [
+      "System architecture",
+      "Member & subscription management",
+      "Attendance tracking",
+      "Database design"
+    ],
+    role: [
+      "Architecture design",
+      "Core functionality",
+      "Database implementation"
+    ],
+    tools: ["Web Development", "Database Design", "System Architecture"],
     isFeatured: false,
     github: null,
   },
