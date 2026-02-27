@@ -136,9 +136,16 @@ export default function Projects() {
                           {project.title}
                         </h3>
 
-                        <span className="px-2 py-1 bg-gray-200 border border-gray-400 rounded text-xs text-gray-700 font-medium whitespace-nowrap">
-                          {project.status}
-                        </span>
+                        <div className="flex flex-col items-end gap-1">
+                          <span className="px-2 py-1 bg-gray-200 border border-gray-400 rounded text-xs text-gray-700 font-medium whitespace-nowrap">
+                            {project.status}
+                          </span>
+                          {project.expectedCompletion && (
+                            <span className="text-xs text-secondary-gray">
+                              (Expected: {project.expectedCompletion})
+                            </span>
+                          )}
+                        </div>
                       </div>
                       
                       {project.github && (
