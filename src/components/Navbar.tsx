@@ -27,10 +27,11 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-sm border-b border-black/10 shadow-sm'
-          : 'bg-white/80 backdrop-blur-sm'
+          ? 'bg-white/90 backdrop-blur-md border-b border-warm-200/60 shadow-sm'
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,11 +39,11 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a
             href="#"
-            className="text-xl font-heading font-semibold text-black hover:text-secondary-gray transition-colors"
+            className="text-xl font-heading font-bold text-primary-dark hover:text-accent transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            PMM
+            PMM<span className="text-accent">.</span>
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -51,17 +52,17 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm text-secondary-gray hover:text-black transition-colors relative group"
+                className="text-sm text-secondary-gray hover:text-primary-dark transition-colors duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-accent-light group-hover:w-full transition-all duration-300 rounded-full" />
               </a>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-black p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation"
+            className="md:hidden text-primary-dark p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -77,18 +78,22 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-black/10"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white/95 backdrop-blur-md border-t border-warm-200/60"
           >
-            <div className="px-4 py-4 space-y-2">
-              {navItems.map((item) => (
-                <a
+            <div className="px-4 py-4 space-y-1">
+              {navItems.map((item, i) => (
+                <motion.a
                   key={item.name}
                   href={item.href}
-                  className="block text-secondary-gray hover:text-black transition-colors py-2 min-h-[44px] flex items-center touch-manipulation"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="block text-secondary-dark hover:text-accent transition-colors duration-300 py-3 min-h-[44px] flex items-center touch-manipulation border-b border-warm-100 last:border-0"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
