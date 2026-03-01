@@ -21,23 +21,23 @@ export default function Button({
   target,
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white';
+    'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-warm-50 text-sm sm:text-base';
 
   const variants = {
     primary:
-      'bg-black text-white hover:bg-gray-800 focus:ring-black',
+      'bg-accent text-white hover:bg-accent-deep shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/30 focus:ring-accent',
     secondary:
-      'bg-gray-700 text-white hover:bg-gray-600 focus:ring-gray-700',
+      'bg-primary-dark text-white hover:bg-primary-charcoal focus:ring-primary-dark',
     outline:
-      'border-2 border-black/20 text-black hover:border-black hover:bg-black hover:text-white focus:ring-black',
+      'border-2 border-accent/25 text-primary-dark hover:border-accent hover:bg-accent hover:text-white focus:ring-accent',
   };
 
   const Component = href ? 'a' : 'button';
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       className={className}
     >
       <Component
@@ -47,7 +47,7 @@ export default function Button({
         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
         className={`${baseStyles} ${variants[variant]}`}
       >
-        {Icon && <Icon size={20} />}
+        {Icon && <Icon size={18} />}
         {children}
       </Component>
     </motion.div>

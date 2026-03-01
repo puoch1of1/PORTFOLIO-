@@ -7,55 +7,78 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 25 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
+    <section id="about" className="relative py-20 sm:py-28 md:py-32 px-4 sm:px-6 lg:px-8 bg-warm-100 overflow-hidden">
+      {/* Ghost background text */}
+      <div className="ghost-text text-[6rem] sm:text-[10rem] md:text-[14rem] top-8 -left-4 sm:left-8 opacity-30">
+        ABOUT
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-10 sm:mb-12 text-center"
-          >
-            About
-          </motion.h2>
+          <motion.div variants={itemVariants} className="mb-10 sm:mb-14">
+            <div className="section-accent mb-4" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold tracking-wide-heading text-primary-dark">
+              About
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
+            <motion.div
+              variants={itemVariants}
+              className="bg-white/70 backdrop-blur-sm border border-warm-200 rounded-xl p-5 sm:p-6 hover:border-accent/20 hover:shadow-md hover:shadow-accent/5 transition-all duration-500"
+            >
+              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <MapPin className="text-accent" size={20} />
+              </div>
+              <p className="text-primary-dark font-semibold mb-1">{about.name}</p>
+              <p className="text-secondary-gray text-sm">{about.origin}</p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-white/70 backdrop-blur-sm border border-warm-200 rounded-xl p-5 sm:p-6 hover:border-accent/20 hover:shadow-md hover:shadow-accent/5 transition-all duration-500"
+            >
+              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <GraduationCap className="text-accent" size={20} />
+              </div>
+              <p className="text-primary-dark font-semibold mb-1">{about.education.degree}</p>
+              <p className="text-secondary-gray text-sm">{about.education.institution}</p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-gradient-to-br from-accent to-accent-deep rounded-xl p-5 sm:p-6 text-white flex flex-col justify-center"
+            >
+              <p className="text-sm font-medium leading-relaxed opacity-90">
+                {about.philosophy}
+              </p>
+            </motion.div>
+          </div>
 
           <motion.div
             variants={itemVariants}
-            className="space-y-6 sm:space-y-8 text-base sm:text-lg text-secondary-gray leading-relaxed"
+            className="relative"
           >
-            <div className="flex items-start gap-4 mb-6">
-              <MapPin className="text-black mt-1 flex-shrink-0" size={24} />
-              <div>
-                <p className="text-black font-semibold mb-2">{about.name}</p>
-                <p className="text-secondary-gray">{about.origin}</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <GraduationCap className="text-gray-700 mt-1 flex-shrink-0" size={24} />
-              <div>
-                <p className="text-black font-semibold mb-2">{about.education.degree}</p>
-                <p className="text-secondary-gray">{about.education.institution}</p>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-black/10">
-              <p className="text-black/90 leading-relaxed whitespace-pre-line">
+            <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/40 via-accent/10 to-transparent hidden sm:block" />
+            <div className="sm:pl-8">
+              <p className="text-base sm:text-lg text-secondary-dark leading-relaxed whitespace-pre-line">
                 {about.narrative}
               </p>
             </div>
