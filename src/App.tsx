@@ -11,7 +11,7 @@ import Contact from './sections/Contact';
 function App() {
   try {
     return (
-      <div className="min-h-screen overflow-x-hidden bg-white">
+      <div className="min-h-screen overflow-x-hidden bg-warm-50">
         <Navbar />
         <main className="w-full">
           <Hero />
@@ -23,10 +23,22 @@ function App() {
           <Affiliations />
           <Contact />
         </main>
-      <footer className="bg-primary-charcoal border-t border-black/10 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center text-secondary-gray text-sm space-y-2">
-          <p className="text-black font-medium">Engineering data pipelines. Building at scale. Transforming chaos into clarity.</p>
-          <p>© {new Date().getFullYear()} Puoch Mabor Makuei. All rights reserved.</p>
+      <footer className="relative bg-primary-dark py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="flex flex-col items-center text-center space-y-4">
+            <a href="#" className="text-2xl font-heading font-bold text-white hover:text-accent-muted transition-colors">
+              PMM<span className="text-accent-light">.</span>
+            </a>
+            <p className="text-warm-200 text-sm max-w-lg leading-relaxed">
+              Engineering data pipelines. Building at scale. Transforming chaos into clarity.
+            </p>
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-accent-light/40 to-transparent" />
+            <p className="text-warm-300 text-xs">
+              © {new Date().getFullYear()} Puoch Mabor Makuei. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
       </div>
