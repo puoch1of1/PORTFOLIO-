@@ -14,6 +14,7 @@
 import 'dotenv/config';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { getClient, generateVisual } from '../src/lib/gemini';
 import { allPrompts, type VisualPrompt } from '../src/prompts/portfolioPrompts';
 
@@ -21,6 +22,8 @@ import { allPrompts, type VisualPrompt } from '../src/prompts/portfolioPrompts';
 // Config
 // ---------------------------------------------------------------------------
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.resolve(__dirname, '..', 'public', 'generated');
 
 // ---------------------------------------------------------------------------
