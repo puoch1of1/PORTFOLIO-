@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Shield, Brain, Network, Wrench, Database, BarChart3 } from 'lucide-react';
+import GeneratedVisual from '../components/GeneratedVisual';
 import { skills } from '../data/content';
 
 const skillIcons: Record<string, typeof Shield> = {
@@ -30,6 +31,16 @@ const itemVariants = {
 export default function Skills() {
   return (
     <section id="skills" className="relative py-20 sm:py-28 md:py-32 px-4 sm:px-6 lg:px-8 bg-warm-100 overflow-hidden">
+      {/* AI-Generated Skills Background (Nano Banana) */}
+      <GeneratedVisual
+        visualId="skills-background"
+        as="background"
+        className="absolute inset-0"
+        alt="AI-generated skills background showing interconnected tech domains"
+      >
+        <div className="absolute inset-0" />
+      </GeneratedVisual>
+
       {/* Ghost background text */}
       <div className="ghost-text text-[5rem] sm:text-[9rem] md:text-[13rem] bottom-4 -right-4 sm:right-8 opacity-30">
         SKILLS

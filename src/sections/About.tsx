@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, MapPin } from 'lucide-react';
+import GeneratedVisual from '../components/GeneratedVisual';
 import { about } from '../data/content';
 
 const containerVariants = {
@@ -76,11 +77,22 @@ export default function About() {
             variants={itemVariants}
             className="relative"
           >
-            <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/40 via-accent/10 to-transparent hidden sm:block" />
-            <div className="sm:pl-8">
-              <p className="text-base sm:text-lg text-secondary-dark leading-relaxed whitespace-pre-line">
-                {about.narrative}
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
+              <div className="md:col-span-3">
+                <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/40 via-accent/10 to-transparent hidden sm:block" />
+                <div className="sm:pl-8">
+                  <p className="text-base sm:text-lg text-secondary-dark leading-relaxed whitespace-pre-line">
+                    {about.narrative}
+                  </p>
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <GeneratedVisual
+                  visualId="about-visual"
+                  alt="AI-generated visual representing data engineering and global connectivity"
+                  className="w-full rounded-xl shadow-lg border border-warm-200"
+                />
+              </div>
             </div>
           </motion.div>
         </motion.div>

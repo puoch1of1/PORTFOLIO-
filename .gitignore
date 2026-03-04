@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Environment secrets
+.env
+.env.local
+
+# Generated AI visuals (regenerated from API, not committed)
+public/generated/*.png
+public/generated/*.jpg
+public/generated/*.webp
+
 # GitHub Pages
 !.github/workflows
 
