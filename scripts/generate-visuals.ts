@@ -45,6 +45,38 @@ function mimeToExt(mime: string): string {
 }
 
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Retry helper
+// ---------------------------------------------------------------------------
+
+const MAX_RETRIES = 3;
+const BASE_DELAY_MS = 40_000; // 40s — generous for free-tier rate limits
+
+async function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function generateWithRetry(prompt: string, label: string): Promise<ReturnType<typeof generateVisual>> {
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      return await generateVisual({ prompt });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      const isRateLimit = msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
+
+      if (isRateLimit && attempt < MAX_RETRIES) {
+        const delay = BASE_DELAY_MS * attempt;
+        console.log(`⏸️  ${label} — rate limited, retrying in ${delay / 1000}s (attempt ${attempt}/${MAX_RETRIES})…`);
+        await sleep(delay);
+      } else {
+        throw err;
+      }
+    }
+  }
+  throw new Error('Unreachable');
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -84,12 +116,14 @@ async function main(): Promise<void> {
 
   console.log(`\n🎨 Generating ${prompts.length} visual(s) via Nano Banana…\n`);
 
+  let successCount = 0;
+
   for (const visualPrompt of prompts) {
     const label = `[${visualPrompt.section}] ${visualPrompt.id}`;
     console.log(`⏳ ${label} — sending prompt…`);
 
     try {
-      const result = await generateVisual({ prompt: visualPrompt.prompt });
+      const result = await generateWithRetry(visualPrompt.prompt, label);
       const ext = mimeToExt(result.mimeType);
       const outPath = path.join(OUTPUT_DIR, `${visualPrompt.id}${ext}`);
 
@@ -97,13 +131,20 @@ async function main(): Promise<void> {
       const buffer = Buffer.from(result.base64, 'base64');
       fs.writeFileSync(outPath, buffer);
 
+      successCount++;
       console.log(`✅ ${label} — saved to ${outPath} (${(buffer.length / 1024).toFixed(1)} KB)`);
     } catch (err) {
       console.error(`❌ ${label} — failed:`, err instanceof Error ? err.message : err);
     }
+
+    // Slight delay between requests to respect rate limits
+    if (prompts.indexOf(visualPrompt) < prompts.length - 1) {
+      console.log('   ⏳ Waiting 10s between requests…');
+      await sleep(10_000);
+    }
   }
 
-  console.log('\n🏁 Done.\n');
+  console.log(`\n🏁 Done — ${successCount}/${prompts.length} visuals generated.\n`);
 }
 
 main().catch((err) => {
