@@ -30,7 +30,7 @@ export interface VisualGenerationOptions {
 // Constants
 // ---------------------------------------------------------------------------
 
-export const DEFAULT_MODEL = 'gemini-2.5-flash-preview-image-generation';
+export const DEFAULT_MODEL = 'gemini-2.5-flash-image';
 
 // ---------------------------------------------------------------------------
 // Client singleton
