@@ -5,7 +5,7 @@ import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Affiliations from './sections/Affiliations';
-import Articles from './sections/Articles';
+// import Articles from './sections/Articles';
 import Contact from './sections/Contact';
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
           <Experience />
           <Skills />
           <Projects />
-          <Articles />
+          {/* Temporarily commented out while working on Medium profile */}
+          {/* <Articles /> */}
           <Affiliations />
           <Contact />
         </main>
