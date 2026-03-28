@@ -1,15 +1,26 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, Mail } from 'lucide-react';
 import Button from '../components/Button';
+import GeneratedVisual from '../components/GeneratedVisual';
 import { personalInfo } from '../data/content';
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-warm-50">
-      {/* Layered Abstract Background */}
-      <div className="absolute inset-0">
+      {/* AI-Generated Hero Visual (Nano Banana) */}
+      <GeneratedVisual
+        visualId="hero-banner"
+        as="background"
+        className="absolute inset-0"
+        alt="AI-generated hero banner showing data streams and cybersecurity motifs"
+      >
+        {/* Empty — overlay handled by GeneratedVisual */}
+      </GeneratedVisual>
+
+      {/* Layered Abstract Background (fallback / overlay) */}
+      <div className="absolute inset-0 pointer-events-none">
         {/* Gradient base */}
-        <div className="absolute inset-0 bg-gradient-to-br from-warm-50 via-white to-accent-subtle" />
+        <div className="absolute inset-0 bg-gradient-to-br from-warm-50/60 via-white/40 to-accent-subtle/50" />
 
         {/* Geometric shapes */}
         <motion.div

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code, Users, Github, Lock, ArrowUpRight } from 'lucide-react';
+import GeneratedVisual from '../components/GeneratedVisual';
 import { projects } from '../data/content';
 
 const containerVariants = {
@@ -28,6 +29,15 @@ export default function Projects() {
       id="projects"
       className="relative py-20 sm:py-28 md:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden"
     >
+      {/* AI-Generated Projects Visual (Nano Banana) */}
+      <div className="absolute top-12 right-8 w-64 h-64 md:w-80 md:h-80 opacity-20 pointer-events-none hidden lg:block">
+        <GeneratedVisual
+          visualId="projects-visual"
+          alt="AI-generated abstract project cards"
+          className="w-full h-full rounded-2xl"
+        />
+      </div>
+
       {/* Ghost background text */}
       <div className="ghost-text text-[5rem] sm:text-[9rem] md:text-[14rem] top-8 left-0 sm:-left-4 opacity-30">
         BUILD

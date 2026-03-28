@@ -7,15 +7,25 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "generate-visuals": "npx tsx scripts/generate-visuals.ts",
+    "generate-visuals:hero": "npx tsx scripts/generate-visuals.ts hero",
+    "generate-visuals:about": "npx tsx scripts/generate-visuals.ts about",
+    "generate-visuals:skills": "npx tsx scripts/generate-visuals.ts skills",
+    "generate-visuals:projects": "npx tsx scripts/generate-visuals.ts projects",
+    "generate-visuals:contact": "npx tsx scripts/generate-visuals.ts contact",
+    "build:full": "npm run generate-visuals && tsc && vite build"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@google/genai": "^1.43.0",
+    "dotenv": "^17.3.1",
     "framer-motion": "^10.16.16",
-    "lucide-react": "^0.294.0"
+    "lucide-react": "^0.294.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/node": "^25.3.3",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -27,8 +37,8 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   }
 }
-

@@ -1,86 +1,65 @@
-# Puoch Mabor Makuei - Portfolio Website
+# Portfolio
 
-A modern, professional portfolio website for Puoch Mabor Makuei showcasing expertise in Data Engineering, Artificial Intelligence, and Data Science.
-
-## Overview
-
-This portfolio website is built with modern web technologies and serves as a comprehensive showcase of professional experience, technical skills, projects, and accomplishments. The site features a clean, responsive design with smooth animations and a professional aesthetic.
-
-## Features
-
-- **Responsive Design** - Fully responsive layout that works seamlessly on desktop, tablet, and mobile devices
-- **Modern UI/UX** - Smooth animations and transitions using Framer Motion
-- **Professional Sections** - Multiple sections including Hero, About, Experience, Skills, Projects, Articles, Affiliations, and Contact
-- **Type-Safe** - Built with TypeScript for better code quality and developer experience
-- **SEO Optimized** - Includes sitemap and Open Graph meta tags for better search engine visibility
-- **Dark/Light Theme Ready** - Tailored styling using Tailwind CSS for consistent design
+Personal portfolio website with **AI-generated visuals** powered by Google Gemini (Nano Banana).
 
 ## Tech Stack
 
-- **React 18** - Modern UI library for building interactive components
-- **TypeScript** - Typed superset of JavaScript for safer development
-- **Vite** - Fast build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework for styling
-- **Framer Motion** - Animation library for smooth, professional transitions
-- **Lucide React** - Icon library with a comprehensive set of icons
+React · TypeScript · Vite · Tailwind CSS · Framer Motion · **Gemini / Nano Banana (image generation)**
 
-## Project Structure
+## Quick Start
 
-```
-src/
-├── components/          # Reusable UI components (Button, Navbar)
-├── sections/           # Page sections (Hero, About, Experience, etc.)
-├── data/               # Static content and configuration
-├── styles/             # Global styles and CSS
-├── App.tsx             # Main App component
-└── main.tsx            # Application entry point
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd PORTFOLIO
-```
-
-2. Install dependencies:
 ```bash
 npm install
-```
-
-### Development
-
-Run the development server:
-```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`
+## AI Visual Generation (Nano Banana)
 
-### Building
+The site uses **Google Gemini's image-generation model** (Nano Banana) to produce section-specific visuals at build time — hero banners, about illustrations, skill backgrounds, and project art.
 
-Build for production:
+### Setup
+
+1. Get a Gemini API key at [Google AI Studio](https://aistudio.google.com/apikey).
+2. Copy the example env file and add your key:
+   ```bash
+   cp .env.example .env
+   # Edit .env and paste your key
+   ```
+3. Generate all visuals:
+   ```bash
+   npm run generate-visuals
+   ```
+   Or generate for a specific section:
+   ```bash
+   npm run generate-visuals:hero
+   npm run generate-visuals:about
+   npm run generate-visuals:skills
+   npm run generate-visuals:projects
+   npm run generate-visuals:contact
+   ```
+4. Start the dev server as usual — generated images are served from `public/generated/`.
+
+### Full Build (generate + compile)
+
 ```bash
-npm run build
+npm run build:full
 ```
 
-Preview the production build:
-```bash
-npm run preview
-```
+### How It Works
 
-## Deployment
+| File / Folder | Purpose |
+|---|---|
+| `src/lib/gemini.ts` | Gemini SDK client wrapper |
+| `src/prompts/portfolioPrompts.ts` | Rich narrative prompt templates per section |
+| `scripts/generate-visuals.ts` | CLI script that calls the API and writes images to `public/generated/` |
+| `src/components/GeneratedVisual.tsx` | React component that renders the generated images (with graceful fallback) |
 
-The website is configured for GitHub Pages deployment with automatic builds and deployment workflows. See [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md) for detailed setup instructions.
+The `GeneratedVisual` component **falls back to a subtle gradient** when images haven't been generated yet, so the site is never broken.
+
+### Customizing Prompts
+
+Edit [src/prompts/portfolioPrompts.ts](src/prompts/portfolioPrompts.ts) to change the visual style, color palette, or composition of any section. Re-run `npm run generate-visuals` afterward.
 
 ## License
 
-This portfolio website is a personal project. All rights reserved.
+All rights reserved.
