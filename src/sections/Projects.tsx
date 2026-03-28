@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Code, Users, Github } from 'lucide-react';
+import { Code, Users, Github, Lock, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data/content';
 
 const containerVariants = {
@@ -7,14 +7,14 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.12,
     },
   },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
 export default function Projects() {
@@ -26,88 +26,112 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-white"
+      className="relative py-20 sm:py-28 md:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-3 sm:mb-4 text-center"
-        >
-          Projects
-        </motion.h2>
+      {/* Ghost background text */}
+      <div className="ghost-text text-[5rem] sm:text-[9rem] md:text-[14rem] top-8 left-0 sm:-left-4 opacity-30">
+        BUILD
+      </div>
 
-        <motion.p
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-sm sm:text-base text-secondary-gray mb-12 sm:mb-16 max-w-2xl mx-auto px-4"
+          className="mb-12 sm:mb-16"
         >
-          Real-world problem solving, systems thinking, and engineering work in progress
-        </motion.p>
+          <div className="section-accent mb-4" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold tracking-wide-heading text-primary-dark mb-3 sm:mb-4">
+            Projects
+          </h2>
+          <p className="text-sm sm:text-base text-secondary-gray max-w-2xl leading-relaxed">
+            Real-world problem solving, systems thinking, and engineering work in progress
+          </p>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-8"
+          className="space-y-10"
         >
-          {/* Featured Project */}
+          {/* Featured Project — full-width split layout */}
           {featuredProject && (
             <motion.div
               variants={itemVariants}
-              className="bg-gray-50 border-2 border-black/20 rounded-lg p-4 sm:p-6 md:p-8 hover:border-black/40 transition-all duration-300"
+              className="bg-gradient-to-br from-accent-subtle via-white to-warm-50 border border-accent/15 rounded-2xl p-6 sm:p-8 md:p-10 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
             >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4 sm:mb-5">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-black break-words">
-                  {featuredProject.title}
-                </h3>
-
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-2 sm:px-3 py-1 bg-gray-200 border border-gray-400 rounded-full text-xs text-gray-700 font-medium whitespace-nowrap">
-                    {featuredProject.status}
-                  </span>
-
-                  {featuredProject.expectedCompletion && (
-                    <span className="text-xs text-secondary-gray">
-                      (Expected: {featuredProject.expectedCompletion})
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10">
+                {/* Left — Info */}
+                <div className="md:col-span-3">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-xs font-medium text-accent-deep">
+                      {featuredProject.status}
                     </span>
-                  )}
+                    {featuredProject.expectedCompletion && (
+                      <span className="text-xs text-secondary-gray">
+                        Expected: {featuredProject.expectedCompletion}
+                      </span>
+                    )}
+                    {featuredProject.isCollaborative && (
+                      <span className="text-xs text-secondary-gray flex items-center gap-1">
+                        <Users size={12} className="text-accent" />
+                        Collaborative
+                      </span>
+                    )}
+                  </div>
 
-                  {featuredProject.isCollaborative && (
-                    <span className="text-xs text-secondary-gray flex items-center gap-1">
-                      <Users size={12} />
-                      Collaborative project
-                    </span>
-                  )}
-                </div>
-              </div>
+                  <h3 className="text-2xl sm:text-3xl font-heading font-bold text-primary-dark mb-4 leading-tight">
+                    {featuredProject.title}
+                  </h3>
 
-              <div className="space-y-3 sm:space-y-4">
-                <div>
-                  <h4 className="text-sm font-semibold text-black mb-2">Overview</h4>
-                  <p className="text-sm sm:text-base text-secondary-gray leading-relaxed">
+                  <p className="text-sm sm:text-base text-secondary-gray leading-relaxed mb-6">
                     {featuredProject.overview}
                   </p>
+
+                  {featuredProject.github && (
+                    <a
+                      href={featuredProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-deep transition-colors font-medium"
+                    >
+                      <Github size={16} />
+                      View on GitHub
+                      <ArrowUpRight size={14} />
+                    </a>
+                  )}
                 </div>
 
-                <div>
-                  <h4 className="text-sm font-semibold text-black mb-2 flex items-center gap-2">
-                    <Code size={16} className="text-gray-700" />
-                    Focus
-                  </h4>
-                  <p className="text-sm sm:text-base text-secondary-gray">
-                    {featuredProject.technicalFocus.join(' · ')}
-                  </p>
-                </div>
+                {/* Right — Technical details */}
+                <div className="md:col-span-2 space-y-5">
+                  <div>
+                    <h4 className="text-xs font-semibold text-accent uppercase tracking-editorial mb-2 flex items-center gap-2">
+                      <Code size={14} />
+                      Technical Focus
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {featuredProject.technicalFocus.map((item) => (
+                        <span key={item} className="px-2.5 py-1 bg-white border border-warm-200 rounded-lg text-xs text-secondary-dark">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
 
-                <div>
-                  <h4 className="text-sm font-semibold text-black mb-2">My Role</h4>
-                  <p className="text-sm sm:text-base text-secondary-gray">
-                    {featuredProject.role.join(' · ')}
-                  </p>
+                  <div>
+                    <h4 className="text-xs font-semibold text-accent uppercase tracking-editorial mb-2">
+                      My Role
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {featuredProject.role.map((item) => (
+                        <span key={item} className="px-2.5 py-1 bg-accent/5 border border-accent/10 rounded-lg text-xs text-accent-deep">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -116,76 +140,62 @@ export default function Projects() {
           {/* Collaborative Projects */}
           {collaborativeProjects.length > 0 && (
             <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl sm:text-3xl font-semibold mb-4 flex items-center gap-2 text-black"
-              >
-                <Users size={28} className="text-gray-700" />
-                Collaborative Projects
-              </motion.h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                {collaborativeProjects.map(project => (
+              <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                  <Users size={16} className="text-accent" />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-heading font-semibold text-primary-dark">
+                  Collaborative Projects
+                </h3>
+              </motion.div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                {collaborativeProjects.map((project, index) => (
                   <motion.div
                     key={project.id}
                     variants={itemVariants}
-                    className="bg-gray-50 border border-black/10 rounded-lg p-4 sm:p-6 hover:border-black/30 transition-all duration-300"
+                    whileHover={{ y: -4 }}
+                    className={`bg-white border border-warm-200 rounded-xl p-5 sm:p-6 hover:border-accent/25 hover:shadow-lg hover:shadow-accent/5 transition-all duration-500 ${
+                      index === 0 && collaborativeProjects.length > 2 ? 'md:col-span-2' : ''
+                    }`}
                   >
-                    <div className="mb-3 sm:mb-4">
-                      <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
-                        <h3 className="text-lg sm:text-xl font-semibold text-black flex-1">
-                          {project.title}
-                        </h3>
-
-                        <div className="flex flex-col items-end gap-1">
-                          <span className="px-2 py-1 bg-gray-200 border border-gray-400 rounded text-xs text-gray-700 font-medium whitespace-nowrap">
-                            {project.status}
-                          </span>
-                          {project.expectedCompletion && (
-                            <span className="text-xs text-secondary-gray">
-                              (Expected: {project.expectedCompletion})
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                      
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 hover:underline mb-2"
-                        >
-                          <Github size={14} />
-                          View on GitHub
-                        </a>
-                      )}
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h4 className="text-lg sm:text-xl font-semibold text-primary-dark flex-1">
+                        {project.title}
+                      </h4>
+                      <span className="px-2.5 py-1 bg-warm-100 border border-warm-200 rounded-full text-xs text-secondary-dark font-medium whitespace-nowrap">
+                        {project.status}
+                      </span>
                     </div>
 
-                    <div className="space-y-3 sm:space-y-4">
-                      <div>
-                        <h4 className="text-sm font-semibold text-black/80 mb-1">
-                          Overview
-                        </h4>
-                        <p className="text-sm text-secondary-gray leading-relaxed">
-                          {project.overview}
-                        </p>
-                      </div>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-accent hover:text-accent-deep transition-colors mb-3 font-medium"
+                      >
+                        <Github size={13} />
+                        View on GitHub
+                      </a>
+                    )}
 
+                    <p className="text-sm text-secondary-gray leading-relaxed mb-4">
+                      {project.overview}
+                    </p>
+
+                    <div className="space-y-3">
                       <div>
-                        <h4 className="text-sm font-semibold text-black/80 mb-1 flex items-center gap-2">
-                          <Code size={14} className="text-gray-700" />
+                        <h5 className="text-xs font-semibold text-accent uppercase tracking-editorial mb-1.5 flex items-center gap-1.5">
+                          <Code size={12} />
                           Focus
-                        </h4>
-                        <p className="text-sm text-secondary-gray">
+                        </h5>
+                        <p className="text-xs text-secondary-gray">
                           {project.technicalFocus.join(' · ')}
                         </p>
                       </div>
-
                       <div>
-                        <h4 className="text-sm font-semibold text-black/80 mb-1">
-                          My Role
-                        </h4>
-                        <p className="text-sm text-secondary-gray">
+                        <h5 className="text-xs font-semibold text-secondary-dark mb-1.5">My Role</h5>
+                        <p className="text-xs text-secondary-gray">
                           {project.role.join(' · ')}
                         </p>
                       </div>
@@ -199,68 +209,60 @@ export default function Projects() {
           {/* Personal Projects */}
           {personalProjects.length > 0 && (
             <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl sm:text-3xl font-semibold mb-4 text-black"
-              >
-                Personal Projects
-              </motion.h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                {personalProjects.map(project => (
+              <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                  <Code size={16} className="text-accent" />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-heading font-semibold text-primary-dark">
+                  Personal Projects
+                </h3>
+              </motion.div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                {personalProjects.map((project) => (
                   <motion.div
                     key={project.id}
                     variants={itemVariants}
-                    className="bg-gray-50 border border-black/10 rounded-lg p-4 sm:p-6 hover:border-black/30 transition-all duration-300"
+                    whileHover={{ y: -4 }}
+                    className="bg-white border border-warm-200 rounded-xl p-5 sm:p-6 hover:border-accent/25 hover:shadow-lg hover:shadow-accent/5 transition-all duration-500"
                   >
-                    <div className="mb-3 sm:mb-4">
-                      <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
-                        <h3 className="text-lg sm:text-xl font-semibold text-black flex-1">
-                          {project.title}
-                        </h3>
-
-                        <span className="px-2 py-1 bg-gray-200 border border-gray-400 rounded text-xs text-gray-700 font-medium whitespace-nowrap">
-                          {project.status}
-                        </span>
-                      </div>
-                      
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 hover:underline mb-2"
-                        >
-                          <Github size={14} />
-                          View on GitHub
-                        </a>
-                      )}
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h4 className="text-lg sm:text-xl font-semibold text-primary-dark flex-1">
+                        {project.title}
+                      </h4>
+                      <span className="px-2.5 py-1 bg-warm-100 border border-warm-200 rounded-full text-xs text-secondary-dark font-medium whitespace-nowrap">
+                        {project.status}
+                      </span>
                     </div>
 
-                    <div className="space-y-3 sm:space-y-4">
-                      <div>
-                        <h4 className="text-sm font-semibold text-black/80 mb-1">
-                          Overview
-                        </h4>
-                        <p className="text-sm text-secondary-gray leading-relaxed">
-                          {project.overview}
-                        </p>
-                      </div>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-accent hover:text-accent-deep transition-colors mb-3 font-medium"
+                      >
+                        <Github size={13} />
+                        View on GitHub
+                      </a>
+                    )}
 
+                    <p className="text-sm text-secondary-gray leading-relaxed mb-4">
+                      {project.overview}
+                    </p>
+
+                    <div className="space-y-3">
                       <div>
-                        <h4 className="text-sm font-semibold text-black/80 mb-1 flex items-center gap-2">
-                          <Code size={14} className="text-gray-700" />
+                        <h5 className="text-xs font-semibold text-accent uppercase tracking-editorial mb-1.5 flex items-center gap-1.5">
+                          <Code size={12} />
                           Focus
-                        </h4>
-                        <p className="text-sm text-secondary-gray">
+                        </h5>
+                        <p className="text-xs text-secondary-gray">
                           {project.technicalFocus.join(' · ')}
                         </p>
                       </div>
-
                       <div>
-                        <h4 className="text-sm font-semibold text-black/80 mb-1">
-                          My Role
-                        </h4>
-                        <p className="text-sm text-secondary-gray">
+                        <h5 className="text-xs font-semibold text-secondary-dark mb-1.5">My Role</h5>
+                        <p className="text-xs text-secondary-gray">
                           {project.role.join(' · ')}
                         </p>
                       </div>
@@ -271,72 +273,40 @@ export default function Projects() {
             </div>
           )}
 
-          {/* Private Projects */}
+          {/* Private Projects — stylized locked overlay */}
           {privateProjects.length > 0 && (
             <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl sm:text-3xl font-semibold mb-4 text-black"
-              >
-                Private Projects
-              </motion.h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                {privateProjects.map(project => (
+              <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-lg bg-warm-200 flex items-center justify-center">
+                  <Lock size={16} className="text-secondary-gray" />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-heading font-semibold text-primary-dark">
+                  Private Projects
+                </h3>
+              </motion.div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                {privateProjects.map((project) => (
                   <motion.div
                     key={project.id}
                     variants={itemVariants}
-                    className="relative bg-gray-50 border border-black/10 rounded-lg p-4 sm:p-6 overflow-hidden transition-all duration-300"
+                    className="relative bg-warm-50 border border-warm-200 rounded-xl p-5 sm:p-6 overflow-hidden"
                   >
-                    {/* Blur content if private */}
-                    <div className="blur-sm pointer-events-none select-none">
-                      <div className="mb-3 sm:mb-4">
-                        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
-                          <h3 className="text-lg sm:text-xl font-semibold text-black flex-1">
-                            {project.title}
-                          </h3>
-
-                          <span className="px-2 py-1 bg-gray-200 border border-gray-400 rounded text-xs text-gray-700 font-medium">
-                            {project.status}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3 sm:space-y-4">
-                        <div>
-                          <h4 className="text-sm font-semibold text-black/80 mb-1">
-                            Overview
-                          </h4>
-                          <p className="text-sm text-secondary-gray leading-relaxed">
-                            {project.overview}
-                          </p>
-                        </div>
-
-                        <div>
-                          <h4 className="text-sm font-semibold text-black/80 mb-1 flex items-center gap-2">
-                            <Code size={14} className="text-gray-700" />
-                            Focus
-                          </h4>
-                          <p className="text-sm text-secondary-gray">
-                            {project.technicalFocus.join(' · ')}
-                          </p>
-                        </div>
-
-                        <div>
-                          <h4 className="text-sm font-semibold text-black/80 mb-1">
-                            My Role
-                          </h4>
-                          <p className="text-sm text-secondary-gray">
-                            {project.role.join(' · ')}
-                          </p>
-                        </div>
-                      </div>
+                    {/* Blurred content */}
+                    <div className="blur-[6px] opacity-40 pointer-events-none select-none">
+                      <h4 className="text-lg font-semibold text-primary-dark mb-2">{project.title}</h4>
+                      <p className="text-sm text-secondary-gray mb-3">{project.overview}</p>
+                      <p className="text-xs text-secondary-gray">{project.technicalFocus.join(' · ')}</p>
                     </div>
 
-                    {/* Private overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="bg-black/70 text-white text-xs sm:text-sm px-4 py-2 rounded-full backdrop-blur">
-                        Private Project
-                      </span>
+                    {/* Stylized locked overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-warm-100/80 via-transparent to-warm-100/80 backdrop-blur-[1px] flex flex-col items-center justify-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-white border border-warm-200 flex items-center justify-center shadow-sm">
+                        <Lock size={20} className="text-secondary-gray" />
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-primary-dark">Private Project</p>
+                        <p className="text-xs text-secondary-gray mt-1">Details available upon request</p>
+                      </div>
                     </div>
                   </motion.div>
                 ))}

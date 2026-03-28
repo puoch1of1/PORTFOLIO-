@@ -22,35 +22,38 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1 },
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
 export default function Affiliations() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
+    <section className="relative py-20 sm:py-28 md:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-12 sm:mb-16 text-center"
+          className="mb-12 sm:mb-16"
         >
-          Affiliations & Platforms
-        </motion.h2>
+          <div className="section-accent mb-4" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold tracking-wide-heading text-primary-dark">
+            Affiliations & Platforms
+          </h2>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5"
         >
           {affiliations.map((affiliation) => {
             const Icon = iconMap[affiliation.icon] || ExternalLink;
@@ -61,16 +64,16 @@ export default function Affiliations() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white border border-black/10 rounded-lg p-4 sm:p-6 hover:border-black/30 transition-all duration-300 group flex flex-col items-center text-center"
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="bg-warm-50 border border-warm-200 rounded-xl p-4 sm:p-5 hover:border-accent/25 hover:shadow-lg hover:shadow-accent/5 transition-all duration-500 group flex flex-col items-center text-center"
               >
-                <div className="p-3 sm:p-4 bg-black/10 rounded-lg mb-3 sm:mb-4 group-hover:bg-black/20 transition-colors">
-                  <Icon className="text-black" size={28} />
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-3 group-hover:bg-accent/20 transition-colors duration-300">
+                  <Icon className="text-accent" size={22} />
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold text-black mb-1 group-hover:text-gray-700 transition-colors break-words">
+                <h3 className="text-sm sm:text-base font-semibold text-primary-dark mb-0.5 group-hover:text-accent-deep transition-colors break-words">
                   {affiliation.name}
                 </h3>
-                <p className="text-xs sm:text-sm text-secondary-gray break-words">{affiliation.role}</p>
+                <p className="text-xs text-secondary-gray break-words">{affiliation.role}</p>
               </motion.a>
             );
           })}
