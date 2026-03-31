@@ -15,9 +15,48 @@ export const about = {
     degree: "Bachelor of Science in Computer Science",
     institution: "Uganda Christian University",
   },
-  narrative: `I'm a computer scientist with a focus on data engineering, infrastructure, and security. My work centers on building reliable data pipelines, analyzing complex data patterns, and ensuring system integrity at scale. I design ETL workflows that transform raw data into actionable insights while maintaining security and reliability standards.
+  narrative: `I'm a computer scientist focused on data engineering, infrastructure, and security in contexts where reliability matters most. My work spans telecommunications monitoring, humanitarian data quality assurance, and applied ETL systems that turn fragmented operational data into trustworthy decision support.
 
-I approach problems with an infrastructure-first mindset—thinking about data quality, system scalability, and security from the ground up. Whether it's building data processing pipelines, monitoring telecommunications networks, or implementing data validation workflows, I'm passionate about creating robust technical solutions that combine data engineering practices with security awareness and analytical rigor.`,
+I approach problems with an infrastructure-first mindset: build data quality checks early, design for low-connectivity environments, and prioritize observability and clear documentation so teams can sustain systems beyond the first deployment.`,
+  howIWork: {
+    workStyle: "async-first",
+    preferences: [
+      "deep work blocks",
+      "written documentation",
+      "async code reviews",
+    ],
+    problemDomains: [
+      "ETL optimization in resource-constrained environments",
+      "Data quality frameworks for humanitarian projects",
+      "Infrastructure monitoring in low-connectivity regions",
+    ],
+  },
+  ahaMonents: [
+    {
+      title: "Notice: many field teams over-engineer ETL early",
+      insight: "I realized several teams were adopting complex orchestration before stabilizing source data contracts and validation rules.",
+      result: "I shifted project sequencing to prioritize ingestion contracts, source-level validation, and lightweight batch pipelines before scaling orchestration.",
+      domain: "Data Engineering",
+    },
+    {
+      title: "Data quality failures are usually communication failures",
+      insight: "Most recurring data issues were not tooling gaps; they were unclear ownership and inconsistent definitions across collaborators.",
+      result: "I introduced shared QA checklists, data dictionaries, and review sign-offs that reduced back-and-forth during deliverable review cycles.",
+      domain: "Data Quality",
+    },
+    {
+      title: "Monitoring without thresholds creates dashboard noise",
+      insight: "Raw KPI visibility alone did not improve decisions because teams lacked clear escalation thresholds and response playbooks.",
+      result: "I helped define threshold-based alerts and practical response triggers so monitoring outputs translated into actionable operations.",
+      domain: "Infrastructure",
+    },
+    {
+      title: "Documentation speed compounds over time",
+      insight: "Teams moving quickly with strong written handoffs maintained momentum even when contributors changed or bandwidth dropped.",
+      result: "I standardized concise implementation notes and decision logs, which improved async collaboration and onboarding efficiency.",
+      domain: "Engineering Operations",
+    },
+  ],
   philosophy: "Data pipelines are critical infrastructure. My role is to build systems that are secure, scalable, and reliable—transforming raw data into organizational intelligence while maintaining integrity every step of the way.",
 };
 
@@ -28,13 +67,24 @@ export const experiences = [
     organization: "National Communication Authority (NCA)",
     location: "Gumbo Sherikat, South Sudan",
     period: "June–October 2025",
-    description: "Monitored telecommunications infrastructure, evaluated network performance and reliability, and gained exposure to spectrum management and regulatory systems.",
+    description: "Designed and maintained monitoring workflows for national telecom infrastructure, tracking critical network reliability and performance indicators to support operational response and regulatory visibility.",
     highlights: [
       "Infrastructure monitoring and performance evaluation",
       "Network reliability assessment",
       "Spectrum management exposure",
       "Regulatory systems understanding",
     ],
+    metrics: [
+      "Tracked 5+ network performance and reliability KPIs",
+      "Supported visibility for national telecom operations",
+      "Improved incident response readiness through structured monitoring",
+    ],
+    decisions: [
+      "Prioritized KPI standardization before adding new dashboards",
+      "Documented threshold assumptions to align technical and regulatory expectations",
+      "Focused monitoring design on actionable indicators over vanity metrics",
+    ],
+    lessonsLearned: "Reliable monitoring is as much about operational clarity as tooling. Clear thresholds and ownership make infrastructure data actually useful.",
   },
   {
     id: 2,
@@ -42,13 +92,24 @@ export const experiences = [
     organization: "Statistics Without Borders (SWB)",
     location: "Remote",
     period: "January 2025 – Present",
-    description: "Reviewed datasets and analytical deliverables to ensure integrity, accuracy, and compliance with statistical quality standards in projects that improve data-driven decisions for underserved communities. Collaborated with international teammates to validate outputs and support best practices in statistical reporting and data quality assurance.",
+    description: "Strengthened data quality in humanitarian analytics by reviewing datasets and deliverables for integrity, consistency, and statistical soundness across distributed global projects.",
     highlights: [
       "Reviewed and validated analytical reports for accuracy against quality assurance guidelines",
       "Ensured consistency, reliability, and compliance of global datasets",
       "Collaborated with international volunteer teams to support pro bono statistical projects",
       "Promoted rigorous data practices in statistical deliverables",
     ],
+    metrics: [
+      "Contributed QA review support across 40+ humanitarian datasets",
+      "Improved consistency of analytical deliverables before stakeholder handoff",
+      "Helped reduce rework by catching quality issues early",
+    ],
+    decisions: [
+      "Used checklist-driven QA reviews to reduce subjective validation",
+      "Flagged methodology risks early instead of only reviewing final outputs",
+      "Standardized issue feedback in written form to improve async collaboration",
+    ],
+    lessonsLearned: "High-impact analytics depends on trust in the underlying data. Quality review processes should be explicit, repeatable, and collaborative.",
   },
   {
     id: 3,
@@ -56,12 +117,23 @@ export const experiences = [
     organization: "Uganda Christian University",
     location: "Uganda",
     period: "2024",
-    description: "Maintained and repaired computer equipment while supporting community institutions.",
+    description: "Improved operational reliability for community institutions by maintaining and repairing computing equipment, reducing downtime for staff and students.",
     highlights: [
       "Hardware maintenance and repair",
       "Community support",
       "Technical troubleshooting",
     ],
+    metrics: [
+      "Restored multiple non-functional devices for daily use",
+      "Reduced repeat hardware issues through preventive maintenance",
+      "Provided on-demand technical support for campus operations",
+    ],
+    decisions: [
+      "Created a triage-first workflow to prioritize high-impact device fixes",
+      "Preferred reusable repair procedures over one-off troubleshooting",
+      "Documented frequent failure patterns to speed future interventions",
+    ],
+    lessonsLearned: "Simple systems and disciplined troubleshooting can deliver outsized impact, especially where replacement budgets are limited.",
   },
   {
     id: 4,
@@ -69,12 +141,23 @@ export const experiences = [
     organization: "Upwork & Fiverr",
     location: "Remote",
     period: "January–August 2023",
-    description: "Provided transcription and copywriting services, demonstrating remote work discipline and client communication skills.",
+    description: "Delivered remote transcription and copywriting projects with reliable turnaround, clear scope communication, and consistent client feedback management.",
     highlights: [
       "Remote work discipline",
       "Client communication",
       "Project delivery",
     ],
+    metrics: [
+      "Managed concurrent client deliverables across multiple gigs",
+      "Maintained consistent delivery timelines for active contracts",
+      "Built repeat-client trust through revision-friendly communication",
+    ],
+    decisions: [
+      "Set explicit scope and revision boundaries before starting work",
+      "Used structured delivery templates to increase consistency",
+      "Adopted async-first client updates to prevent ambiguity",
+    ],
+    lessonsLearned: "Execution quality and communication clarity are equally important. Good client outcomes come from disciplined process, not speed alone.",
   },
 ];
 
@@ -113,11 +196,25 @@ export const skills = {
 export const projects = [
   {
     id: 1,
-    title: "Medicine Supply Data Pipeline & Forecasting System",
+    title: "Medicine Supply Pipeline - Reducing Waste and Preventing Stockouts",
     status: "Final Year Project — In Progress",
     expectedCompletion: "May",
     isCollaborative: true,
-    overview: "A data engineering solution addressing drug stockouts and medicine expiries in Uganda's medical sector through automated ETL pipelines, data quality validation, and predictive analytics infrastructure.",
+    overview: "Designed an end-to-end data pipeline for hospital inventory data to detect stockout risk and expiry exposure early, replacing fragmented spreadsheet-based tracking with a more reliable analytics workflow.",
+    problem: "Hospitals lose critical medicines and budget value due to delayed inventory visibility, stockouts, and expiry events caused by manual reporting and inconsistent records.",
+    whyMatters: "Medicine availability directly affects patient outcomes, treatment continuity, and healthcare costs.",
+    outcomes: [
+      "Projected 30-35% reduction in preventable medicine waste",
+      "Single source of truth for inventory and expiry visibility",
+      "Faster detection of stockout risk through automated data checks",
+    ],
+    keyDecisions: [
+      "Prioritized source-level validation before warehouse-level transformations",
+      "Used Python and Pandas for rapid iteration during data contract discovery",
+      "Designed modular ETL stages so forecasting can evolve independently",
+    ],
+    caseStudySlug: "medicine-supply-pipeline",
+    liveDemo: null,
     technicalFocus: [
       "ETL pipeline design for inventory data",
       "Data cleaning and validation workflows",
@@ -137,10 +234,24 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Synod",
+    title: "Synod - Making Dense Course Content Actionable",
     status: "Open Source Contribution",
     isCollaborative: true,
-    overview: "An intelligent lecture and course content assistant that transforms dense academic materials into structured, digestible knowledge. Uses NLP to extract key concepts, generate summaries, and produce revision questions from PDFs and slides.",
+    overview: "Contributed to a learning assistant that converts complex lecture materials into structured summaries, ranked concepts, and study prompts so students can revise efficiently.",
+    problem: "Students often spend more time navigating disorganized notes and slides than actually learning core concepts.",
+    whyMatters: "Better content structuring improves study efficiency and reduces cognitive overload for learners.",
+    outcomes: [
+      "Improved extraction of key concepts from lecture files",
+      "Generated revision-ready summaries and question prompts",
+      "Reduced manual prep effort for exam revision workflows",
+    ],
+    keyDecisions: [
+      "Combined TF-IDF and transformer-based ranking for balanced relevance",
+      "Separated extraction pipeline from summarization logic for maintainability",
+      "Focused on explainable output structure over opaque scoring",
+    ],
+    caseStudySlug: "synod-learning-assistant",
+    liveDemo: null,
     technicalFocus: [
       "Natural Language Processing",
       "Transformer models & TF-IDF",
@@ -158,10 +269,24 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Back and Forth - Agon AI Debate Site",
+    title: "Back and Forth - Structuring Better AI-Assisted Debate",
     status: "In Progress",
     isCollaborative: false,
-    overview: "A live AI debate engine where autonomous agents clash over user-submitted questions. Generates structured arguments, counterarguments, and synthesized conclusions, enabling users to explore different perspectives on complex topics.",
+    overview: "Building a multi-agent debate platform that transforms open-ended prompts into structured arguments, rebuttals, and synthesized conclusions for clearer reasoning.",
+    problem: "Users exploring complex topics often receive one-sided AI responses without transparent counterarguments or synthesis.",
+    whyMatters: "Balanced reasoning support helps users evaluate trade-offs and make better-informed decisions.",
+    outcomes: [
+      "Structured claim, rebuttal, and synthesis flow for each prompt",
+      "Clearer comparison of competing perspectives",
+      "Foundation for explainable AI-driven discussion interfaces",
+    ],
+    keyDecisions: [
+      "Used role-based agent orchestration instead of single-model monologues",
+      "Defined deterministic debate rounds for traceable outputs",
+      "Prioritized synthesis quality as a first-class product feature",
+    ],
+    caseStudySlug: "back-and-forth-ai-debate",
+    liveDemo: null,
     technicalFocus: [
       "AI agent orchestration",
       "Argument generation & analysis",
@@ -179,10 +304,24 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Ngimuria Travel Agency Website",
+    title: "Ngimuria Travel Platform - Building Trust Through Digital Presence",
     status: "In Progress",
     isCollaborative: false,
-    overview: "A professional website for a tourism company operating in Eastern Uganda and the Turkana region of Kenya, built to establish online presence and client trust.",
+    overview: "Developing a performance-focused company site that helps a regional travel agency present services clearly, build trust, and convert inquiries into bookings.",
+    problem: "Local tourism operators often lose potential clients due to low-credibility web presence and unclear service communication.",
+    whyMatters: "A credible digital presence directly affects customer trust, inquiry quality, and business growth.",
+    outcomes: [
+      "Improved service visibility across priority travel routes",
+      "Mobile-first experience for regional user behavior",
+      "Clear inquiry pathways for prospective clients",
+    ],
+    keyDecisions: [
+      "Prioritized mobile UX and load performance for low-bandwidth users",
+      "Designed content architecture around customer journey stages",
+      "Used accessible, conversion-oriented page structure over visual clutter",
+    ],
+    caseStudySlug: null,
+    liveDemo: null,
     technicalFocus: [
       "Responsive web design",
       "Performance",
@@ -200,11 +339,25 @@ export const projects = [
   },
   {
     id: 5,
-    title: "Dynasty Gym Management Application",
+    title: "Dynasty Gym System - Replacing Manual Operations",
     status: "Private — In Progress",
     isPrivate: true,
     isCollaborative: false,
-    overview: "A custom gym management system for Dynasty Gym in Juba, South Sudan, replacing manual tracking with a structured, scalable digital solution.",
+    overview: "Designing a private operations platform to digitize membership, subscriptions, and attendance management for a growing gym business.",
+    problem: "Manual gym workflows create billing inaccuracies, inconsistent attendance records, and poor operational visibility.",
+    whyMatters: "Operational digitization improves service quality, member retention, and business decision-making.",
+    outcomes: [
+      "Centralized member and subscription records",
+      "Improved billing and attendance tracking consistency",
+      "Foundation for reporting and retention analytics",
+    ],
+    keyDecisions: [
+      "Modeled core entities first to prevent workflow fragmentation",
+      "Designed role-aware access patterns for staff operations",
+      "Scoped MVP around billing and attendance before advanced analytics",
+    ],
+    caseStudySlug: "dynasty-gym-operations-platform",
+    liveDemo: null,
     technicalFocus: [
       "System architecture",
       "Member & subscription management",
