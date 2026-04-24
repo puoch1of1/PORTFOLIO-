@@ -4,4 +4,36 @@
     <loc>https://puochmabormakuei.com/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://puochmabormakuei.com/projects</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://puochmabormakuei.com/about</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puochmabormakuei.com/contact</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puochmabormakuei.com/projects/south-sudan-logistics-system</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puochmabormakuei.com/projects/medicine-supply-data-pipeline</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puochmabormakuei.com/projects/dynasty-gym-management</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://puochmabormakuei.com/projects/synod-course-assistant</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://puochmabormakuei.com/projects/back-and-forth-debate-engine</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
