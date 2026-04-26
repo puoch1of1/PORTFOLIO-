@@ -1,15 +1,12 @@
 /**
- * GeneratedVisual component
+ * Renders an AI-generated image produced by the optional Gemini build script.
  *
- * Renders an AI-generated image produced by the Nano Banana build script.
- * Images are served from /generated/<id>.<ext> after running
- * `npm run generate-visuals`.
- *
- * Falls back to a subtle gradient placeholder when the image hasn't been
- * generated yet, so the site never looks broken.
+ * The component tries several common file extensions before falling back to a
+ * built-in gradient, so the site still looks intentional even when generation
+ * has not been run or the API returned a different image format.
  */
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface GeneratedVisualProps {
@@ -23,7 +20,7 @@ interface GeneratedVisualProps {
   as?: 'img' | 'background';
   /** Children rendered on top when as="background" */
   children?: React.ReactNode;
-  /** File extension (default: ".png") */
+  /** Preferred file extension to try first */
   ext?: string;
 }
 
@@ -36,11 +33,31 @@ export default function GeneratedVisual({
   ext = '.png',
 }: GeneratedVisualProps) {
   const [hasError, setHasError] = useState(false);
-  const src = `/generated/${visualId}${ext}`;
+  const [candidateIndex, setCandidateIndex] = useState(0);
 
-  // -----------------------------------------------------------------------
-  // Fallback gradient (shown when image is missing or hasn't been generated)
-  // -----------------------------------------------------------------------
+  const candidateExtensions = useMemo(() => {
+    const preferredExtension = ext.startsWith('.') ? ext : `.${ext}`;
+    const orderedExtensions = [preferredExtension, '.png', '.jpg', '.jpeg', '.webp'];
+
+    return orderedExtensions.filter((value, index) => orderedExtensions.indexOf(value) === index);
+  }, [ext]);
+
+  useEffect(() => {
+    setHasError(false);
+    setCandidateIndex(0);
+  }, [candidateExtensions, visualId]);
+
+  const handleAssetError = () => {
+    if (candidateIndex < candidateExtensions.length - 1) {
+      setCandidateIndex((current) => current + 1);
+      return;
+    }
+
+    setHasError(true);
+  };
+
+  const src = `/generated/${visualId}${candidateExtensions[candidateIndex]}`;
+
   const fallback = (
     <div
       className={`bg-gradient-to-br from-accent/5 via-warm-100 to-accent-subtle ${className}`}
@@ -50,40 +67,34 @@ export default function GeneratedVisual({
     </div>
   );
 
-  if (hasError) return fallback;
+  if (hasError) {
+    return fallback;
+  }
 
-  // -----------------------------------------------------------------------
-  // Render as CSS background
-  // -----------------------------------------------------------------------
   if (as === 'background') {
     return (
       <div
         className={`relative bg-cover bg-center ${className}`}
         style={{ backgroundImage: `url(${src})` }}
       >
-        {/* Overlay to maintain text readability */}
         <div className="absolute inset-0 bg-warm-50/70 backdrop-blur-[2px]" />
         <div className="relative z-10">{children}</div>
-        {/* Hidden img to detect load errors */}
         <img
           src={src}
           alt=""
           className="sr-only"
-          onError={() => setHasError(true)}
+          onError={handleAssetError}
         />
       </div>
     );
   }
 
-  // -----------------------------------------------------------------------
-  // Render as <img>
-  // -----------------------------------------------------------------------
   return (
     <motion.img
       src={src}
       alt={alt}
       className={`object-cover ${className}`}
-      onError={() => setHasError(true)}
+      onError={handleAssetError}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
