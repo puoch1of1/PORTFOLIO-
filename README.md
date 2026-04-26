@@ -63,13 +63,21 @@ npm run generate-visuals:projects
 npm run generate-visuals:contact
 ```
 
+By default, these commands now skip cleanly when `GEMINI_API_KEY` is missing or still set to the placeholder value, so the rest of the site can continue using built-in fallbacks.
+
+If you want missing Gemini credentials to fail loudly, use:
+
+```bash
+npm run generate-visuals:strict
+```
+
 There is also a combined build command:
 
 ```bash
 npm run build:full
 ```
 
-Use it with caution: on this branch, the Gemini portion is best described as experimental rather than fully supported.
+`npm run build:full` keeps Gemini optional. If credentials are not configured, the visual-generation step is skipped and the app still builds with fallback visuals.
 
 ## Environment
 
