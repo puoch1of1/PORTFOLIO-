@@ -1,10 +1,6 @@
 # Portfolio
 
-Personal portfolio website with **AI-generated visuals** powered by Google Gemini (Nano Banana).
-
-## Tech Stack
-
-React · TypeScript · Vite · Tailwind CSS · Framer Motion · **Gemini / Nano Banana (image generation)**
+Personal portfolio website built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion.
 
 ## Quick Start
 
@@ -13,52 +9,75 @@ npm install
 npm run dev
 ```
 
-## AI Visual Generation (Nano Banana)
+## Scripts
 
-The site uses **Google Gemini's image-generation model** (Nano Banana) to produce section-specific visuals at build time — hero banners, about illustrations, skill backgrounds, and project art.
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
 
-### Setup
+## Project Structure
 
-1. Get a Gemini API key at [Google AI Studio](https://aistudio.google.com/apikey).
-2. Copy the example env file and add your key:
-   ```bash
-   cp .env.example .env
-   # Edit .env and paste your key
-   ```
-3. Generate all visuals:
-   ```bash
-   npm run generate-visuals
-   ```
-   Or generate for a specific section:
-   ```bash
-   npm run generate-visuals:hero
-   npm run generate-visuals:about
-   npm run generate-visuals:skills
-   npm run generate-visuals:projects
-   npm run generate-visuals:contact
-   ```
-4. Start the dev server as usual — generated images are served from `public/generated/`.
+| Path | Purpose |
+|---|---|
+| `src/App.tsx` | Main app composition |
+| `src/sections/` | Portfolio page sections |
+| `src/components/` | Reusable UI components |
+| `src/data/` | Portfolio content and structured data |
+| `src/styles/index.css` | Global styling |
+| `public/` | Static assets such as the CV, sitemap, and robots file |
 
-### Full Build (generate + compile)
+## AI Visual Generation Status
+
+This repository includes an experimental Gemini-based image generation setup, but it should be treated as optional and not as a guaranteed part of the normal development workflow.
+
+What exists in the codebase:
+
+- `scripts/generate-visuals.ts` attempts to generate section visuals into `public/generated/`
+- `src/lib/gemini.ts` wraps the Google GenAI client
+- `src/prompts/portfolioPrompts.ts` stores the text prompts
+- `src/components/GeneratedVisual.tsx` renders generated images and falls back gracefully if they are missing
+
+What to assume:
+
+- The portfolio itself does not depend on Gemini output to run
+- If visual generation fails, the site should still work without generated images
+- The Gemini workflow may require fixes or API adjustments before it can be relied on
+
+## Optional Gemini Setup
+
+If you want to experiment with the image-generation scripts anyway:
+
+1. Create a `.env` file from `.env.example`
+2. Add a valid `GEMINI_API_KEY`
+3. Try one of the generation commands below
+
+```bash
+npm run generate-visuals
+npm run generate-visuals:hero
+npm run generate-visuals:about
+npm run generate-visuals:skills
+npm run generate-visuals:projects
+npm run generate-visuals:contact
+```
+
+There is also a combined build command:
 
 ```bash
 npm run build:full
 ```
 
-### How It Works
+Use it with caution: on this branch, the Gemini portion is best described as experimental rather than fully supported.
 
-| File / Folder | Purpose |
-|---|---|
-| `src/lib/gemini.ts` | Gemini SDK client wrapper |
-| `src/prompts/portfolioPrompts.ts` | Rich narrative prompt templates per section |
-| `scripts/generate-visuals.ts` | CLI script that calls the API and writes images to `public/generated/` |
-| `src/components/GeneratedVisual.tsx` | React component that renders the generated images (with graceful fallback) |
+## Environment
 
-The `GeneratedVisual` component **falls back to a subtle gradient** when images haven't been generated yet, so the site is never broken.
+`.env.example` contains the expected Gemini API key variable:
 
-### Customizing Prompts
-
-Edit [src/prompts/portfolioPrompts.ts](src/prompts/portfolioPrompts.ts) to change the visual style, color palette, or composition of any section. Re-run `npm run generate-visuals` afterward.
+```bash
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 
 ## License
 
