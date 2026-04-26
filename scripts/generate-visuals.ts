@@ -1,39 +1,32 @@
 /**
- * generate-visuals.ts
+ * Build-time script that calls the Gemini image-generation API and writes
+ * portfolio visuals to public/generated/.
  *
- * Build-time script that calls the Gemini (Nano Banana) API to produce
- * portfolio section images and writes them to public/generated/.
- *
- * Usage:
- *   npx tsx scripts/generate-visuals.ts            # generate all
- *   npx tsx scripts/generate-visuals.ts hero about  # generate specific sections
- *
- * Requires GEMINI_API_KEY in the environment or in a root .env file.
+ * The workflow is intentionally optional:
+ * - If GEMINI_API_KEY is missing or still set to the placeholder value,
+ *   the script logs a warning and exits successfully.
+ * - Pass --require-gemini to make missing credentials a hard failure.
  */
 
 import 'dotenv/config';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getClient, generateVisual } from '../src/lib/gemini';
+import { generateVisual, getClient } from '../src/lib/gemini';
 import { allPrompts, type VisualPrompt } from '../src/prompts/portfolioPrompts';
-
-// ---------------------------------------------------------------------------
-// Config
-// ---------------------------------------------------------------------------
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.resolve(__dirname, '..', 'public', 'generated');
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+const MAX_RETRIES = 3;
+const BASE_DELAY_MS = 40_000;
+const PLACEHOLDER_API_KEYS = new Set(['', 'your_gemini_api_key_here']);
 
 function ensureDir(dir: string): void {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
-    console.log(`📁 Created directory: ${dir}`);
+    console.log(`[generate-visuals] Created directory: ${dir}`);
   }
 }
 
@@ -41,113 +34,126 @@ function mimeToExt(mime: string): string {
   if (mime.includes('png')) return '.png';
   if (mime.includes('jpeg') || mime.includes('jpg')) return '.jpg';
   if (mime.includes('webp')) return '.webp';
-  return '.png'; // fallback
+  return '.png';
 }
 
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// Retry helper
-// ---------------------------------------------------------------------------
+function hasConfiguredApiKey(apiKey: string | undefined): apiKey is string {
+  if (!apiKey) {
+    return false;
+  }
 
-const MAX_RETRIES = 3;
-const BASE_DELAY_MS = 40_000; // 40s — generous for free-tier rate limits
+  return !PLACEHOLDER_API_KEYS.has(apiKey.trim());
+}
 
 async function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function generateWithRetry(prompt: string, label: string): Promise<ReturnType<typeof generateVisual>> {
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+async function generateWithRetry(prompt: string, label: string): Promise<Awaited<ReturnType<typeof generateVisual>>> {
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt += 1) {
     try {
       return await generateVisual({ prompt });
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      const isRateLimit = msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      const isRateLimited = message.includes('429') || message.includes('RESOURCE_EXHAUSTED');
 
-      if (isRateLimit && attempt < MAX_RETRIES) {
-        const delay = BASE_DELAY_MS * attempt;
-        console.log(`⏸️  ${label} — rate limited, retrying in ${delay / 1000}s (attempt ${attempt}/${MAX_RETRIES})…`);
-        await sleep(delay);
-      } else {
-        throw err;
+      if (!isRateLimited || attempt === MAX_RETRIES) {
+        throw error;
       }
+
+      const delay = BASE_DELAY_MS * attempt;
+      console.log(
+        `[generate-visuals] ${label} - rate limited, retrying in ${delay / 1000}s (attempt ${attempt}/${MAX_RETRIES})...`,
+      );
+      await sleep(delay);
     }
   }
-  throw new Error('Unreachable');
+
+  throw new Error('Unreachable retry state.');
 }
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
+function getRequestedPrompts(args: string[]): VisualPrompt[] {
+  if (args.length === 0) {
+    return allPrompts;
+  }
+
+  const prompts = allPrompts.filter((prompt) =>
+    args.some((section) => prompt.section === section || prompt.id === section),
+  );
+
+  if (prompts.length === 0) {
+    throw new Error(
+      `No matching prompts for: ${args.join(', ')}. Available sections: ${allPrompts
+        .map((prompt) => prompt.section)
+        .join(', ')}`,
+    );
+  }
+
+  return prompts;
+}
 
 async function main(): Promise<void> {
-  // Validate API key early
+  const args = process.argv.slice(2);
+  const requireGemini = args.includes('--require-gemini');
+  const requestedSections = args.filter((arg) => arg !== '--require-gemini');
+  const prompts = getRequestedPrompts(requestedSections);
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    console.error('❌ GEMINI_API_KEY is not set. Add it to your .env file or export it.');
-    process.exit(1);
-  }
 
-  // Initialise client
-  getClient(apiKey);
+  if (!hasConfiguredApiKey(apiKey)) {
+    const message =
+      '[generate-visuals] Skipping Gemini visual generation because GEMINI_API_KEY is missing or still set to the placeholder value. The site will use built-in visual fallbacks.';
 
-  // Determine which prompts to run
-  const requestedSections = process.argv.slice(2);
-  let prompts: VisualPrompt[];
-
-  if (requestedSections.length > 0) {
-    prompts = allPrompts.filter((p) =>
-      requestedSections.some(
-        (s) => p.section === s || p.id === s,
-      ),
-    );
-    if (prompts.length === 0) {
-      console.error(
-        `❌ No matching prompts for: ${requestedSections.join(', ')}\n` +
-          `   Available sections: ${allPrompts.map((p) => p.section).join(', ')}`,
-      );
-      process.exit(1);
+    if (requireGemini) {
+      throw new Error(message);
     }
-  } else {
-    prompts = allPrompts;
+
+    console.warn(message);
+    return;
   }
 
+  getClient(apiKey);
   ensureDir(OUTPUT_DIR);
 
-  console.log(`\n🎨 Generating ${prompts.length} visual(s) via Nano Banana…\n`);
+  console.log(`\n[generate-visuals] Generating ${prompts.length} visual(s) via Nano Banana...\n`);
 
   let successCount = 0;
 
-  for (const visualPrompt of prompts) {
+  for (const [index, visualPrompt] of prompts.entries()) {
     const label = `[${visualPrompt.section}] ${visualPrompt.id}`;
-    console.log(`⏳ ${label} — sending prompt…`);
+    console.log(`[generate-visuals] ${label} - sending prompt...`);
 
     try {
       const result = await generateWithRetry(visualPrompt.prompt, label);
       const ext = mimeToExt(result.mimeType);
       const outPath = path.join(OUTPUT_DIR, `${visualPrompt.id}${ext}`);
-
-      // Write the base64 image to disk
       const buffer = Buffer.from(result.base64, 'base64');
-      fs.writeFileSync(outPath, buffer);
 
-      successCount++;
-      console.log(`✅ ${label} — saved to ${outPath} (${(buffer.length / 1024).toFixed(1)} KB)`);
-    } catch (err) {
-      console.error(`❌ ${label} — failed:`, err instanceof Error ? err.message : err);
+      fs.writeFileSync(outPath, buffer);
+      successCount += 1;
+
+      console.log(
+        `[generate-visuals] ${label} - saved to ${outPath} (${(buffer.length / 1024).toFixed(1)} KB)`,
+      );
+    } catch (error) {
+      console.error(
+        `[generate-visuals] ${label} - failed:`,
+        error instanceof Error ? error.message : error,
+      );
     }
 
-    // Slight delay between requests to respect rate limits
-    if (prompts.indexOf(visualPrompt) < prompts.length - 1) {
-      console.log('   ⏳ Waiting 10s between requests…');
+    if (index < prompts.length - 1) {
+      console.log('[generate-visuals] Waiting 10s between requests...');
       await sleep(10_000);
     }
   }
 
-  console.log(`\n🏁 Done — ${successCount}/${prompts.length} visuals generated.\n`);
+  console.log(`\n[generate-visuals] Done - ${successCount}/${prompts.length} visuals generated.\n`);
 }
 
-main().catch((err) => {
-  console.error('Fatal error:', err);
+main().catch((error) => {
+  console.error(
+    '[generate-visuals] Fatal error:',
+    error instanceof Error ? error.message : error,
+  );
   process.exit(1);
 });
