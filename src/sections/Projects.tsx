@@ -66,14 +66,14 @@ export default function Projects() {
           viewport={{ once: true, margin: '-100px' }}
           className="space-y-10"
         >
-          {/* Featured Project — full-width split layout */}
+          {/* Featured Project - full-width split layout */}
           {featuredProject && (
             <motion.div
               variants={itemVariants}
               className="bg-gradient-to-br from-accent-subtle via-white to-warm-50 border border-accent/15 rounded-2xl p-6 sm:p-8 md:p-10 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
             >
               <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10">
-                {/* Left — Info */}
+                {/* Left - Info */}
                 <div className="md:col-span-3">
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <span className="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-xs font-medium text-accent-deep">
@@ -114,7 +114,7 @@ export default function Projects() {
                   )}
                 </div>
 
-                {/* Right — Technical details */}
+                {/* Right - Technical details */}
                 <div className="md:col-span-2 space-y-5">
                   <div>
                     <h4 className="text-xs font-semibold text-accent uppercase tracking-editorial mb-2 flex items-center gap-2">
@@ -200,13 +200,13 @@ export default function Projects() {
                           Focus
                         </h5>
                         <p className="text-xs text-secondary-gray">
-                          {project.technicalFocus.join(' · ')}
+                          {project.technicalFocus.join(' / ')}
                         </p>
                       </div>
                       <div>
                         <h5 className="text-xs font-semibold text-secondary-dark mb-1.5">My Role</h5>
                         <p className="text-xs text-secondary-gray">
-                          {project.role.join(' · ')}
+                          {project.role.join(' / ')}
                         </p>
                       </div>
                     </div>
@@ -267,13 +267,13 @@ export default function Projects() {
                           Focus
                         </h5>
                         <p className="text-xs text-secondary-gray">
-                          {project.technicalFocus.join(' · ')}
+                          {project.technicalFocus.join(' / ')}
                         </p>
                       </div>
                       <div>
                         <h5 className="text-xs font-semibold text-secondary-dark mb-1.5">My Role</h5>
                         <p className="text-xs text-secondary-gray">
-                          {project.role.join(' · ')}
+                          {project.role.join(' / ')}
                         </p>
                       </div>
                     </div>
@@ -283,7 +283,7 @@ export default function Projects() {
             </div>
           )}
 
-          {/* Private Projects — stylized locked overlay */}
+          {/* Private Projects - stylized locked overlay */}
           {privateProjects.length > 0 && (
             <div>
               <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
@@ -305,7 +305,7 @@ export default function Projects() {
                     <div className="blur-[6px] opacity-40 pointer-events-none select-none">
                       <h4 className="text-lg font-semibold text-primary-dark mb-2">{project.title}</h4>
                       <p className="text-sm text-secondary-gray mb-3">{project.overview}</p>
-                      <p className="text-xs text-secondary-gray">{project.technicalFocus.join(' · ')}</p>
+                      <p className="text-xs text-secondary-gray">{project.technicalFocus.join(' / ')}</p>
                     </div>
 
                     {/* Stylized locked overlay */}
