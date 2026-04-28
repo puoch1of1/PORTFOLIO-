@@ -5,25 +5,21 @@ import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Affiliations from './sections/Affiliations';
-// import Articles from './sections/Articles';
 import Contact from './sections/Contact';
 
 function App() {
-  try {
-    return (
-      <div className="min-h-screen overflow-x-hidden bg-warm-50">
-        <Navbar />
-        <main className="w-full">
-          <Hero />
-          <About />
-          <Experience />
-          <Skills />
-          <Projects />
-          {/* Temporarily commented out while working on Medium profile */}
-          {/* <Articles /> */}
-          <Affiliations />
-          <Contact />
-        </main>
+  return (
+    <div className="min-h-screen overflow-x-hidden bg-warm-50">
+      <Navbar />
+      <main className="w-full">
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Affiliations />
+        <Contact />
+      </main>
       <footer className="relative bg-primary-dark py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -42,17 +38,8 @@ function App() {
           </div>
         </div>
       </footer>
-      </div>
-    );
-  } catch (error) {
-    console.error('App error:', error);
-    return (
-      <div style={{ padding: '50px', color: 'red' }}>
-        <h1>Error loading app</h1>
-        <p>{String(error)}</p>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
