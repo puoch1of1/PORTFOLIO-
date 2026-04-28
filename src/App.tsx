@@ -21,7 +21,6 @@ function App() {
         <Contact />
       </main>
       <footer className="relative bg-primary-dark py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="flex flex-col items-center text-center space-y-4">
@@ -33,7 +32,7 @@ function App() {
             </p>
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-accent-light/40 to-transparent" />
             <p className="text-warm-300 text-xs">
-              © {new Date().getFullYear()} Puoch Mabor Makuei. All rights reserved.
+              &copy; {new Date().getFullYear()} Puoch Mabor Makuei. All rights reserved.
             </p>
           </div>
         </div>
