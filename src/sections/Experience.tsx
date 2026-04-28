@@ -98,7 +98,7 @@ export default function Experience() {
                             key={idx}
                             className="text-sm text-secondary-gray flex items-start gap-2"
                           >
-                            <span className="text-accent mt-1 text-xs">◆</span>
+                            <span className="text-accent mt-1 text-xs">&bull;</span>
                             <span>{highlight}</span>
                           </li>
                         ))}
