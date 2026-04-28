@@ -57,7 +57,7 @@ I approach problems with an infrastructure-first mindset: build data quality che
       domain: "Engineering Operations",
     },
   ],
-  philosophy: "Data pipelines are critical infrastructure. My role is to build systems that are secure, scalable, and reliable—transforming raw data into organizational intelligence while maintaining integrity every step of the way.",
+  philosophy: "Data pipelines are critical infrastructure. My role is to build systems that are secure, scalable, and reliable - transforming raw data into organizational intelligence while maintaining integrity every step of the way.",
 };
 
 export const experiences = [
@@ -66,7 +66,7 @@ export const experiences = [
     title: "Technical Intern",
     organization: "National Communication Authority (NCA)",
     location: "Gumbo Sherikat, South Sudan",
-    period: "June–October 2025",
+    period: "June-October 2025",
     description: "Designed and maintained monitoring workflows for national telecom infrastructure, tracking critical network reliability and performance indicators to support operational response and regulatory visibility.",
     highlights: [
       "Infrastructure monitoring and performance evaluation",
@@ -91,7 +91,7 @@ export const experiences = [
     title: "Deliverable Quality Assurance Volunteer",
     organization: "Statistics Without Borders (SWB)",
     location: "Remote",
-    period: "January 2025 – Present",
+    period: "January 2025 - Present",
     description: "Strengthened data quality in humanitarian analytics by reviewing datasets and deliverables for integrity, consistency, and statistical soundness across distributed global projects.",
     highlights: [
       "Reviewed and validated analytical reports for accuracy against quality assurance guidelines",
@@ -140,7 +140,7 @@ export const experiences = [
     title: "Freelancer",
     organization: "Upwork & Fiverr",
     location: "Remote",
-    period: "January–August 2023",
+    period: "January-August 2023",
     description: "Delivered remote transcription and copywriting projects with reliable turnaround, clear scope communication, and consistent client feedback management.",
     highlights: [
       "Remote work discipline",
@@ -197,7 +197,7 @@ export const projects = [
   {
     id: 1,
     title: "Medicine Supply Pipeline - Reducing Waste and Preventing Stockouts",
-    status: "Final Year Project — In Progress",
+    status: "Final Year Project - In Progress",
     expectedCompletion: "May",
     isCollaborative: true,
     overview: "Designed an end-to-end data pipeline for hospital inventory data to detect stockout risk and expiry exposure early, replacing fragmented spreadsheet-based tracking with a more reliable analytics workflow.",
@@ -340,7 +340,7 @@ export const projects = [
   {
     id: 5,
     title: "Dynasty Gym System - Replacing Manual Operations",
-    status: "Private — In Progress",
+    status: "Private - In Progress",
     isPrivate: true,
     isCollaborative: false,
     overview: "Designing a private operations platform to digitize membership, subscriptions, and attendance management for a growing gym business.",
@@ -405,36 +405,6 @@ export const affiliations = [
     role: "Professional Network",
     url: "https://www.linkedin.com/in/puoch-mabor-makuei-490252320/",
     icon: "linkedin",
-  },
-];
-
-export const articles = [
-  {
-    id: 1,
-    title: "Building Scalable ETL Pipelines for Healthcare Data in East Africa",
-    description: "How I designed a data pipeline to address medicine stockouts and improve pharmaceutical supply chain visibility in Uganda.",
-    date: "January 2026",
-    readTime: "8 min read",
-    tags: ["Data Engineering", "ETL", "Healthcare"],
-    url: "https://medium.com/@yourusername/article-slug-1",
-  },
-  {
-    id: 2,
-    title: "Data Quality Assurance: Lessons from Statistics Without Borders",
-    description: "Key takeaways from reviewing datasets and analytical deliverables for global humanitarian projects.",
-    date: "December 2025",
-    readTime: "6 min read",
-    tags: ["Data Quality", "Volunteering", "Statistics"],
-    url: "https://medium.com/@yourusername/article-slug-2",
-  },
-  {
-    id: 3,
-    title: "From Chaos to Clarity: Infrastructure Monitoring at a National Level",
-    description: "Reflections on monitoring telecommunications infrastructure and evaluating network performance at South Sudan's NCA.",
-    date: "November 2025",
-    readTime: "5 min read",
-    tags: ["Infrastructure", "Cybersecurity", "Telecom"],
-    url: "https://medium.com/@yourusername/article-slug-3",
   },
 ];
 
