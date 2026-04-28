@@ -14,7 +14,7 @@ export default function Hero() {
         className="absolute inset-0"
         alt="AI-generated hero banner showing data streams and cybersecurity motifs"
       >
-        {/* Empty — overlay handled by GeneratedVisual */}
+        {/* Empty - overlay handled by GeneratedVisual */}
       </GeneratedVisual>
 
       {/* Layered Abstract Background (fallback / overlay) */}
